@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GikApplication {
+public class PrevengicApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GikApplication.class, args);
+        SpringApplication.run(PrevengicApplication.class, args);
     }
 }

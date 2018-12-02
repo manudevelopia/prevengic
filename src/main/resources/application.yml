@@ -1,0 +1,9 @@
+
+spring:
+
+  application:
+    name: prevengic
+
+  thymeleaf:
+    cache: false
+

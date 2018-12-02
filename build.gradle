@@ -34,8 +34,12 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
+task installJsDependencies(type: Exec) {
+    commandLine "npm", "install"
+}
 
 task webpack(type: Exec) {
+    dependsOn installJsDependencies
     commandLine "$projectDir/node_modules/.bin/webpack"
 }
 

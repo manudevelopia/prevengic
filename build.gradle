@@ -38,3 +38,7 @@ dependencies {
 task webpack(type: Exec) {
     commandLine "$projectDir/node_modules/.bin/webpack"
 }
+
+war {
+    dependsOn webpack
+}

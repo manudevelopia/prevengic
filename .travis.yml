@@ -1,5 +1,6 @@
 language: java
 jdk:
+<<<<<<< HEAD
 - openjdk8
 deploy:
   provider: heroku
@@ -8,3 +9,6 @@ deploy:
   app: prevengic
   on:
     repo: manudevelopia/prevengic
+=======
+  - openjdk8
+>>>>>>> Support travis CI

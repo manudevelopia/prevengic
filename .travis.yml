@@ -1,3 +1,10 @@
 language: java
 jdk:
-  - openjdk8
+- openjdk8
+deploy:
+  provider: heroku
+  api_key:
+    secure: pmMAR8ZC+VEtG4zropyGKFuo2rQ0i+ZEA/tglWpiB0cv+Lhmtg/dBa4iSQ70kOP3+0bLAPuYeQcO19VDrhcbG7FV711GwiR3yOvuO3sxMSK8DjaS/xGJ57K6ZIVdXDWb56n0TAFqrRgJk/chEgnIO91r3y0raG1VOeJX/pJb1qseS1hUkU+VV4Hm6bAFNxnrOD5jUjKKCdxlNdb1+odXRuU4TkKw7o4+KMc5lgv3Zl0tI6ACNcTeROehrpnBGMFl5WrKT/B8yDMdLrvVq3ECaBG+RrwtypLF9z24zUC85xQ0Y55YBFw+6vSh+f0Rz0kHyspo6NaDhWlTPNBSK590AzLrx4VdsZ7QiyXpbl72PTtLiRoD4XHciuWejtkiHImPWLQDwPEqpx2MdbDI2egB9C1Vp0yhId1mMsHxJE88rwOPZ9VpZdAsfS57dbaSZf/XgAUdtE+SNCtt4ge85A1XxzQTjTf2tSKaRps/V7/I+D4a3ENh+A1Dngxp0ET3gfJbIIRmQI/fzEDr7K5qpo/jxfs7Kf8DkbO/SzlvDZ/tCA3lUoVGhlOiJ/8fIWr4iKYFiji5n/vDBUDTl30XT6WI3yLZSZ3RYcGcM9Nt65w/yLGRWUjEqQyJ3MlYvSueltJUwMLaEhGb5WSt8nrLjDT4dGNPgoM6qSmhZC3NqmKU5uM=
+  app: prevengic
+  on:
+    repo: manudevelopia/prevengic

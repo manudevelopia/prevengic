@@ -42,6 +42,6 @@ task webpack(type: Exec) {
     commandLine "$projectDir/node_modules/.bin/webpack"
 }
 
-jar {
+build {
     dependsOn webpack
 }

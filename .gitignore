@@ -27,6 +27,7 @@
 
 ## front
 node_modules
-
+bundle.*
+src/main/resources/static/dist/
 
 .DS_Store

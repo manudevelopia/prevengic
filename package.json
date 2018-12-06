@@ -2,13 +2,13 @@
   "name": "prevengic",
   "version": "1.0.0",
   "description": "Prevengic Generador de Infromes de Químicos",
+  "repository": "https://github.com/manudevelopia/prevengic",
   "main": "index.js",
   "author": "Manu Garcia",
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch -d",
-    "postinstall": "webpack -p --progress"
+    "watch": "webpack --watch -d"
   },
   "dependencies": {
     "@types/react": "^16.7.11",

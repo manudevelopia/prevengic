@@ -14,6 +14,6 @@ You can have a try to this app at https://prevengic.herokuapp.com/
 
 
 ## To do
-- Compilar el front y generar el bundle.js forma automatizada en el despliegue
+- Install dependencies, transpile Typescript and generate bundle from frontend code
 
 

@@ -11,6 +11,5 @@ public interface UserMapper {
     UserMapper MAPPER = Mappers.getMapper(UserMapper.class);
 
     User entityToDomain(UserDao entity);
-    UserDao domainToEntity(User domain);
 
 }

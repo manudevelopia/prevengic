@@ -20,5 +20,5 @@ public class Report {
     private Set<Workarea> workareas;
 
     @ManyToOne
-    private User user;
+    private UserDao user;
 }

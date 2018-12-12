@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Data
 @Entity
-public class User {
+public class UserDao {
 
     @Id
     private String email;

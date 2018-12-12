@@ -8,8 +8,6 @@ import lombok.Data;
 public class Compound {
 
     private String code;
-
     private String name;
-
     private ChemicalProfile chemicalProfile;
 }

@@ -3,11 +3,11 @@ package info.developia.prevengic.dao;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Data
 @Entity
+@Table(name = "REPORTS")
 public class Report {
 
     @Id

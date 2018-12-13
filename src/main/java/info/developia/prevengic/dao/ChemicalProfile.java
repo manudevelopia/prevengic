@@ -7,6 +7,7 @@ import java.util.Set;
 
 @Data
 @Entity
+@Table(name = "CHEMICAL_PROFILES")
 public class ChemicalProfile {
 
     @Id

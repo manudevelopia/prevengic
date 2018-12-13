@@ -2,14 +2,12 @@ package info.developia.prevengic.dao;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Set;
 
 @Data
 @Entity
+@Table(name = "WORKAREAS")
 public class Workarea {
 
     @Id

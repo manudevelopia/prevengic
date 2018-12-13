@@ -6,10 +6,12 @@ import org.hibernate.validator.constraints.UniqueElements;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.util.Set;
 
 @Data
 @Entity
+@Table(name = "NOTES")
 public class Note {
 
     @Id
@@ -20,5 +22,5 @@ public class Note {
 
     @ManyToMany
     private Set<ChemicalProfile> chemicalProfiles;
-    
+
 }

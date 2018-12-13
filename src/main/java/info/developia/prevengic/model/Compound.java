@@ -7,7 +7,10 @@ import lombok.Data;
 @Builder
 public class Compound {
 
-    private String code;
+    private String nce;
+    private String cas;
     private String name;
+
     private ChemicalProfile chemicalProfile;
+
 }

@@ -1,14 +1,14 @@
 package info.developia.prevengic.repository;
 
-import info.developia.prevengic.dao.UserDao;
+import info.developia.prevengic.dao.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserDao, String> {
+public interface UserRepository extends JpaRepository<User, String> {
 
-    Optional<UserDao> findByEmail(String email);
+    Optional<User> findByEmail(String email);
 
 }

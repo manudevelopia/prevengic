@@ -14,7 +14,11 @@ public class ChemicalProfile {
     @Id
     private Long id;
 
-    private String prop1;
+    private Double vlaEdPpm;
+    private Double vlaEdMgm;
+
+    private Double vlaEcPpm;
+    private Double vlaEcMgm;
 
     @OneToMany(mappedBy = "chemicalProfile")
     private Set<Compound> compounds;

@@ -3,9 +3,8 @@ package info.developia.prevengic.dao;
 import lombok.Data;
 import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -13,7 +12,10 @@ public class Compound {
 
     @Id
     @UniqueElements
-    private String code;
+    private String nce;
+
+    @UniqueElements
+    private String cas;
 
     @UniqueElements
     private String name;
@@ -23,5 +25,8 @@ public class Compound {
 
     @ManyToOne
     private Workarea workarea;
+
+    @ManyToMany
+    private Set<WarningAdvice> warningAdvices;
 
 }

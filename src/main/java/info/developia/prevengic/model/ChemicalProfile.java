@@ -9,7 +9,14 @@ import java.util.Set;
 @Builder
 public class ChemicalProfile {
 
-    private String prop1;
+    private Double vlaEdPpm;
+    private Double vlaEdMgm;
+
+    private Double vlaEcPpm;
+    private Double vlaEcMgm;
+
+    private Set<String> notes;
+    private Set<String> dangerNotes;
 
     private Set<Compound> compounds;
 

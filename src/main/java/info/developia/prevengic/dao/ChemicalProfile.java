@@ -22,4 +22,10 @@ public class ChemicalProfile {
     @OneToMany(mappedBy = "chemicalProfile")
     private Set<Compound> compounds;
 
+    @ManyToMany
+    private Set<WarningAdvice> warningAdvices;
+
+    @ManyToMany
+    private Set<Note> notes;
+
 }

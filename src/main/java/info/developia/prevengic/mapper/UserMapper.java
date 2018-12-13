@@ -1,7 +1,6 @@
 package info.developia.prevengic.mapper;
 
-import info.developia.prevengic.dao.UserDao;
-import info.developia.prevengic.model.User;
+import info.developia.prevengic.dao.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -10,6 +9,6 @@ public interface UserMapper {
 
     UserMapper MAPPER = Mappers.getMapper(UserMapper.class);
 
-    User entityToDomain(UserDao entity);
+    info.developia.prevengic.model.User entityToDomain(User entity);
 
 }

@@ -1,12 +1,16 @@
 package info.developia.prevengic.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ChemicalProfile {
 
     private Double vlaEdPpm;
@@ -15,8 +19,8 @@ public class ChemicalProfile {
     private Double vlaEcPpm;
     private Double vlaEcMgm;
 
-    private Set<String> notes;
-    private Set<String> dangerNotes;
+//    private Set<String> notes;
+//    private Set<String> dangerNotes;
 
     private Set<Compound> compounds;
 

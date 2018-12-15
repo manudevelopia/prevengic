@@ -1,0 +1,49 @@
+package info.developia.prevengic.controller;
+
+import info.developia.prevengic.model.Compound;
+import info.developia.prevengic.service.CompoundService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/compounds")
+public class CompoundController {
+
+    private final CompoundService compoundService;
+
+    public CompoundController(CompoundService compoundService) {
+        this.compoundService = compoundService;
+    }
+
+    @GetMapping("/all")
+    ResponseEntity<List<Compound>> getAll() {
+        List<Compound> compounds = compoundService.findAll();
+
+        return ResponseEntity.ok(compounds);
+    }
+
+    @GetMapping("/find")
+    ResponseEntity<Compound> findByName(@RequestParam(required = false) String name,
+                                        @RequestParam(required = false) String nce,
+                                        @RequestParam(required = false) String cas) {
+        Compound compound = null;
+
+        if (name != null && nce == null && cas == null) {
+            compound = compoundService.findByName(name);
+        } else if (name == null && nce != null && cas == null) {
+            compound = compoundService.findByNce(nce);
+        } else if (name == null && nce == null && cas != null) {
+            compound = compoundService.findByCas(cas);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(compound);
+    }
+
+}

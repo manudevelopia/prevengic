@@ -19,7 +19,7 @@ public class RepositoryController {
         this.reportService = reportService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     ResponseEntity<List<Report>> getAll() {
         List<Report> reports = reportService.findAll();
 

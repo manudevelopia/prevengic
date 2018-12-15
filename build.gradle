@@ -4,7 +4,7 @@ buildscript {
     }
     repositories {
         mavenCentral()
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
         maven { url 'https://jitpack.io' }
     }
     dependencies {
@@ -27,17 +27,18 @@ repositories {
 
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter-actuator')
-    implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
-    implementation('org.springframework.boot:spring-boot-starter-web')
-    runtimeOnly('com.h2database:h2')
-    runtimeOnly('org.postgresql:postgresql')
-    compileOnly('org.projectlombok:lombok')
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'org.postgresql:postgresql'
+    compileOnly 'org.projectlombok:lombok'
 
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    testCompile group: 'org.spockframework', name: 'spock-core', version: '1.2-groovy-2.5'
-    testCompile group: 'org.spockframework', name: 'spock-spring', version: '1.2-groovy-2.5'
+    testCompile 'org.spockframework:spock-core:1.2-groovy-2.5'
+    testCompile 'org.spockframework:spock-spring:1.2-groovy-2.5'
+    testCompile 'io.rest-assured:rest-assured:3.2.0'
 }
 
 task installJsDependencies(type: Exec) {

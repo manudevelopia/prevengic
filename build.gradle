@@ -28,6 +28,7 @@ repositories {
 
 
 dependencies {
+
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -38,7 +39,7 @@ dependencies {
     compileOnly('org.projectlombok:lombok')
     compile 'org.mapstruct:mapstruct-jdk8:1.2.0.Final'
     compileOnly 'org.mapstruct:mapstruct-processor:1.2.0.Final'
-
+    
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testCompile 'org.spockframework:spock-core:1.2-groovy-2.5'
     testCompile 'org.spockframework:spock-spring:1.2-groovy-2.5'

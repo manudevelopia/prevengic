@@ -4,7 +4,7 @@ buildscript {
     }
     repositories {
         mavenCentral()
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url 'https://jitpack.io' }
     }
     dependencies {
@@ -20,9 +20,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'info.developia.prevengic'
 version = '0.0.1-SNAPSHOT'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 8
 
 repositories {
     mavenCentral()
@@ -33,6 +31,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.postgresql:postgresql'
 

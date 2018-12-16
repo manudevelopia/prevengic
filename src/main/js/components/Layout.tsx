@@ -21,38 +21,26 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
 
   constructor(props: LayoutProps) {
     super(props);
+
     this.state = {
       results: [],
       selection: []
     };
   }
 
-  // This just provide mock data to visualize concept
-  componentDidMount() {
-    fetch('/api/compounds/all', {credentials: 'same-origin',})
-      .then((response) => {
-        return response.json();
-      })
-      .then((results) => {
-        this.setState({
-          results: results,
-          selection: results
-        });
-      })
-      .catch((e) => {
-        return e;
-      });
-  }
-
   render() {
     return (
       <Container fluid={true}>
         <Header/>
-        <Search/>
+        <Search onChange={(e: any) => {this.handleUpdateResults(e)}}/>
         <Results results={this.state.results}/>
         <Selection results={this.state.selection}/>
       </Container>
     );
   }
 
+  private handleUpdateResults(results: any) : void {
+    this.setState({ results: results });
+  }
+  
 }

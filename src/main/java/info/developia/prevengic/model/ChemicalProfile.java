@@ -19,9 +19,7 @@ public class ChemicalProfile {
     private Double vlaEcPpm;
     private Double vlaEcMgm;
 
-//    private Set<String> notes;
-//    private Set<String> dangerNotes;
-
-    private Set<Compound> compounds;
+    private Set<WarningAdvice> warningAdvices;
+    private Set<Note> notes;
 
 }

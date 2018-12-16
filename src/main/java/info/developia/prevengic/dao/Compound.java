@@ -30,7 +30,4 @@ public class Compound {
     @ManyToOne
     private Workarea workarea;
 
-    @ManyToMany
-    private Set<WarningAdvice> warningAdvices;
-
 }

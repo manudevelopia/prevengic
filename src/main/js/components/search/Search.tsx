@@ -5,19 +5,12 @@ export class Search extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);
-  }
 
-  public handleSearchNce(event: any): void {
-    fetch('/api/compounds/all', {credentials: 'same-origin',})
-      .then((response) => {
-        return response.json();
-      })
-      .then((results) => {
-        this.props.onChange(results);
-      })
-      .catch((e) => {
-        return e;
-      });
+    this.state = {
+      nce: undefined,
+      cas: undefined,
+      name: undefined
+    }
   }
 
   render() {
@@ -30,7 +23,8 @@ export class Search extends React.Component<any, any> {
               <Col md={3}>
                 <FormGroup>
                   <Label for="nce">Nº CE</Label>
-                  <Input type="text" name="nce" id="nce" placeholder="Buscar por Nº CE"/>
+                  <Input type="text" name="nce" id="nce" placeholder="Buscar por Nº CE"
+                         onChange={(e: any) => this.handleChange(e)}/>
                 </FormGroup>
                 <Button color="primary" size="sm"
                         onClick={(e: any) => this.handleSearchNce(e)}>Buscar por Nº CE</Button>
@@ -38,7 +32,8 @@ export class Search extends React.Component<any, any> {
               <Col md={3}>
                 <FormGroup>
                   <Label for="name">CAS</Label>
-                  <Input type="text" name="cas" id="cas" placeholder="Buscar por CAS"/>
+                  <Input type="text" name="cas" id="cas" placeholder="Buscar por CAS"
+                         onChange={(e: any) => this.handleChange(e)}/>/>
                 </FormGroup>
                 <Button color="primary" size="sm"
                         onClick={(e: any) => this.handleSearchNce(e)}>Buscar por CAS</Button>
@@ -46,7 +41,8 @@ export class Search extends React.Component<any, any> {
               <Col md={6}>
                 <FormGroup>
                   <Label for="name">Nombre</Label>
-                  <Input type="text" name="name" id="name" placeholder="Buscar por Nombre"/>
+                  <Input type="text" name="name" id="name" placeholder="Buscar por Nombre"
+                         onChange={(e: any) => this.handleChange(e)}/>/>
                 </FormGroup>
                 <Button color="primary" size="sm"
                         onClick={(e: any) => this.handleSearchNce(e)}>Buscar por Nombre</Button>
@@ -56,6 +52,39 @@ export class Search extends React.Component<any, any> {
         </Col>
       </Row>
     );
+  }
+
+  private handleSearchNce(event: any): void {
+    fetch('/api/compounds/all', {credentials: 'same-origin',})
+      .then((response) => {
+        return response.json();
+      })
+      .then((results) => {
+        this.props.onChange(results);
+      })
+      .catch((e) => {
+        return e;
+      });
+  }
+
+  private handleChange(event: any) {
+    const target = event.target;
+    const value = (target.type === 'checkbox' || target.type === 'radio') ? target.checked : target.value;
+    const name = target.name;
+
+    this.cleanSearchFields();
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  private cleanSearchFields() {
+    this.setState({
+      nce: undefined,
+      cas: undefined,
+      name: undefined
+    });
   }
 
 }

@@ -10,6 +10,23 @@
     "watch": "webpack --watch -d",
     "postinstall": "webpack -p --progress"
   },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/src/test/js/test-shim.js",
+      "<rootDir>/src/test/js/test-setup.js"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/src/test/js/test-preprocessor.js"
+    },
+    "testMatch": [
+      "**/__tests__/*.(ts|tsx|js)"
+    ]
+  },
   "dependencies": {
     "@types/react": "^16.7.11",
     "@types/react-dom": "^16.0.11",
@@ -19,7 +36,13 @@
     "reactstrap": "^6.5.0"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.15",
+    "@types/jest": "^23.3.10",
     "awesome-typescript-loader": "^5.2.1",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "jest": "^23.6.0",
+    "react-test-renderer": "^16.6.3",
     "source-map-loader": "^0.2.4",
     "typescript": "^3.2.1",
     "webpack": "^4.26.1",

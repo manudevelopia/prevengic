@@ -1,1 +1,2 @@
- web java -Dserver.port=$PORT $JAVA_OPTS -jar -Dspring.profiles.active=heroku build/libs/*.jar
+ web java -Dserver.port=$PORT $JAVA_OPTS -jar -Dspring.profheroku logs --tail
+ iles.active=heroku build/libs/*.jar

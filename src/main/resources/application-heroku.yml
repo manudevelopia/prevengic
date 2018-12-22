@@ -5,9 +5,8 @@ spring:
     url: ${JDBC_DATABASE_URL}
     username: ${JDBC_DATABASE_USERNAME}
     password: ${JDBC_DATABASE_PASSWORD}
+    platform: mysql
 
   jpa:
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate.ddl-auto: create-drop
     show-sql: false

@@ -36,7 +36,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'org.postgresql:postgresql'
+    runtime 'mysql:mysql-connector-java'
 
     compileOnly('org.projectlombok:lombok')
     compile 'org.mapstruct:mapstruct-jdk8:1.2.0.Final'

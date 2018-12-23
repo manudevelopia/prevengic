@@ -23,22 +23,22 @@ public class CompoundServiceImpl implements CompoundService {
     }
 
     @Override
-    public Compound findByName(String name) {
-        return compoundRepository.findByName(name)
+    public List<Compound> findByName(String name) {
+        return compoundRepository.findByNameIgnoreCaseContaining(name)
                 .map(CompoundMapper.MAPPER::entityToDomain)
                 .orElseThrow(CompoundDoesNotExistException::new);
     }
 
     @Override
-    public Compound findByNce(String nce) {
-        return compoundRepository.findByNce(nce)
+    public List<Compound> findByNce(String nce) {
+        return compoundRepository.findByNceIgnoreCaseContaining(nce)
                 .map(CompoundMapper.MAPPER::entityToDomain)
                 .orElseThrow(CompoundDoesNotExistException::new);
     }
 
     @Override
-    public Compound findByCas(String cas) {
-        return compoundRepository.findByCas(cas)
+    public List<Compound> findByCas(String cas) {
+        return compoundRepository.findByCasIgnoreCaseContaining(cas)
                 .map(CompoundMapper.MAPPER::entityToDomain)
                 .orElseThrow(CompoundDoesNotExistException::new);
     }

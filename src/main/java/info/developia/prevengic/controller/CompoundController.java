@@ -28,22 +28,22 @@ public class CompoundController {
     }
 
     @GetMapping("/find")
-    ResponseEntity<Compound> findByName(@RequestParam(required = false) String name,
+    ResponseEntity<List<Compound>> findByName(@RequestParam(required = false) String name,
                                         @RequestParam(required = false) String nce,
                                         @RequestParam(required = false) String cas) {
-        Compound compound = null;
+        List<Compound> compounds = null;
 
         if (name != null && nce == null && cas == null) {
-            compound = compoundService.findByName(name);
+            compounds = compoundService.findByName(name);
         } else if (name == null && nce != null && cas == null) {
-            compound = compoundService.findByNce(nce);
+            compounds = compoundService.findByNce(nce);
         } else if (name == null && nce == null && cas != null) {
-            compound = compoundService.findByCas(cas);
+            compounds = compoundService.findByCas(cas);
         } else {
             return ResponseEntity.badRequest().build();
         }
 
-        return ResponseEntity.ok(compound);
+        return ResponseEntity.ok(compounds);
     }
 
 }

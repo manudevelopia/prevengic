@@ -1,9 +1,11 @@
 package info.developia.prevengic.dao;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import java.util.Set;
 
 @Data
@@ -15,9 +17,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @UniqueElements
+    @Email(regexp = ".+@.+\\..+|")
     private String email;
 
+    @NotEmpty
+    @Pattern(regexp = "[^0-9]") // not number allowed
     private String name;
 
     private String password;

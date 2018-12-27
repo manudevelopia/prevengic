@@ -4,6 +4,9 @@ import lombok.Data;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Data
@@ -15,9 +18,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @UniqueElements
+    @Email(regexp = ".+@.+\\..+|")
     private String email;
 
+    @NotEmpty
     private String name;
 
     private String password;

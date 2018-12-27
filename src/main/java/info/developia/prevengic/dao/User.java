@@ -21,7 +21,6 @@ public class User {
     private String email;
 
     @NotEmpty
-    @Pattern(regexp = "[^0-9]") // not number allowed
     private String name;
 
     private String password;

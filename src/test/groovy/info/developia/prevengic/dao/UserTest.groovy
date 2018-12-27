@@ -16,17 +16,15 @@ class UserTest extends Specification {
 
     String userEmail
     String userName
-    String userPassword
 
     def setup() {
         userEmail = "user@user.com"
         userName = "John Doe"
-        userPassword = "secret"
     }
 
-    def "user can be persisted and recovered"() {
+    def "User can be persisted and recovered"() {
         given:
-        User user = new User(email: userEmail, name: userName, password: userPassword)
+        User user = new User(email: userEmail, name: userName)
 
         when:
         repository.save(user)
@@ -37,21 +35,29 @@ class UserTest extends Specification {
         verifyAll(result) {
             email == userEmail
             name == userName
-            password == userPassword
         }
     }
 
-    def "user has to provide a valid email to be persisted"() {
+    def "User has to provide a valid email and name to be persisted"() {
         given:
-        userEmail = "invalid @mail"
-        User user = new User(email: userEmail)
+        User user = new User(email: e, name: n)
 
         when:
         repository.save(user)
-        repository.findByEmail(userEmail).get()
+        repository.findByEmail(e).get()
 
         then:
         thrown(ConstraintViolationException)
+
+        where:
+        e                   | n
+        ""                  | ""
+        "valid@mail.com"    | ""
+        "valid@mail.com"    | "12"
+        "invalid@mail"      | "8999 991"
+        "invalid@mail"      | "Name"
+        "invalid @mail"     | "Name"
+        "invalid @mail.com" | "Name"
     }
 
 }

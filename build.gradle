@@ -17,6 +17,7 @@ apply plugin: 'groovy'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'jacoco'
 
 group = 'info.developia.prevengic'
 version = '0.0.1-SNAPSHOT'
@@ -60,4 +61,13 @@ task webpack(type: Exec) {
 
 build {
     dependsOn webpack
+}
+
+check.dependsOn jacocoTestReport
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+    }
 }

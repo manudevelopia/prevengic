@@ -53,8 +53,6 @@ class UserTest extends Specification {
         e                   | n
         ""                  | ""
         "valid@mail.com"    | ""
-        "valid@mail.com"    | "12"
-        "invalid@mail"      | "8999 991"
         "invalid@mail"      | "Name"
         "invalid @mail"     | "Name"
         "invalid @mail.com" | "Name"

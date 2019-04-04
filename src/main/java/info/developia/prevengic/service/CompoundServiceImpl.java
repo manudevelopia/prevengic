@@ -4,6 +4,7 @@ import info.developia.prevengic.exception.CompoundDoesNotExistException;
 import info.developia.prevengic.mapper.CompoundMapper;
 import info.developia.prevengic.model.Compound;
 import info.developia.prevengic.repository.CompoundRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class CompoundServiceImpl implements CompoundService {
 
     private final CompoundRepository compoundRepository;
 
+    @Autowired
     public CompoundServiceImpl(CompoundRepository compoundRepository) {
         this.compoundRepository = compoundRepository;
     }

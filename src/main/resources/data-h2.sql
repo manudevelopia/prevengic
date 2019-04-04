@@ -1,7 +1,8 @@
-insert into USERS(id, email, name) values
-(1, 'user1@user.com','User 1'),
-(2, 'user2@user.com','User 2'),
-(3, 'user3@user.com','User 3');
+insert into USERS(id, email, password, name) values
+(1, 'admin@prevengic.com', 'password', 'admin'),
+(2, 'user1@prevengic.com', 'password', 'user1'),
+(3, 'user2@prevengic.com', 'password', 'user3'),
+(4, 'user3@prevengic.com', 'password', 'user4');
 
 insert into CHEMICAL_PROFILES(id) values
 (1),

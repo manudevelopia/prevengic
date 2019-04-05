@@ -20,7 +20,9 @@ export class Selection extends React.Component<any, any> {
           <td>
             <Input type="text" name="exposition" id="exposition" placeholder="Exposición"/>
           </td>
-          <td><Button color="danger" size="sm">Eliminar</Button></td>
+          <td>
+            <Button color="danger" size="sm" onClick={() => {this.removeFromSelected(index)}}>Eliminar</Button>
+          </td>
         </tr>;
       }
     );
@@ -43,11 +45,21 @@ export class Selection extends React.Component<any, any> {
               </thead>
               <tbody>{compounds}</tbody>
             </Table>
-            <Button color="success">Generar informe</Button>
+            <Button color="success" onClick={(e: any) => {this.handleSubmit(e)}}>Generar informe</Button>
           </Form>
         </Col>
       </Row>
     );
+  }
+
+  private removeFromSelected(index: number) {
+    this.props.onChange(index);
+  }
+
+  private handleSubmit(e: any) {
+    e.preventDefault();
+
+    console.log(this.state.selection);
   }
 
 }

@@ -31,18 +31,8 @@ public class CompoundController {
     ResponseEntity<List<Compound>> findByName(@RequestParam(required = false) String name,
                                         @RequestParam(required = false) String nce,
                                         @RequestParam(required = false) String cas) {
-        List<Compound> compounds = null;
-
-        if (name != null && nce == null && cas == null) {
-            compounds = compoundService.findByName(name);
-        } else if (name == null && nce != null && cas == null) {
-            compounds = compoundService.findByNce(nce);
-        } else if (name == null && nce == null && cas != null) {
-            compounds = compoundService.findByCas(cas);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
-
+        List<Compound> compounds = compoundService.findBy(nce, cas, name);
+        
         return ResponseEntity.ok(compounds);
     }
 

@@ -5,6 +5,7 @@ import info.developia.prevengic.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import spock.lang.Specification
+import spock.lang.Unroll
 
 import javax.validation.ConstraintViolationException
 

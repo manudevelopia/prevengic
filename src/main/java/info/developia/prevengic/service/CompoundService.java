@@ -14,4 +14,6 @@ public interface CompoundService {
 
     List<Compound> findByCas(String cas);
 
+    List<Compound> findBy(String nce, String cas, String name);
+
 }

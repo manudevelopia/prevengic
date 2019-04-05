@@ -5,9 +5,14 @@ import info.developia.prevengic.mapper.CompoundMapper;
 import info.developia.prevengic.model.Compound;
 import info.developia.prevengic.repository.CompoundRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 
 @Service
 public class CompoundServiceImpl implements CompoundService {
@@ -43,6 +48,27 @@ public class CompoundServiceImpl implements CompoundService {
         return compoundRepository.findByCasIgnoreCaseContaining(cas)
                 .map(CompoundMapper.MAPPER::entityToDomain)
                 .orElseThrow(CompoundDoesNotExistException::new);
+    }
+
+    @Override
+    public List<Compound> findBy(String nce, String cas, String name) {
+        info.developia.prevengic.dao.Compound compoundExample = info.developia.prevengic.dao.Compound.builder()
+                .cas(cas)
+                .nce(nce)
+                .name(name)
+                .build();
+
+        ExampleMatcher matcher = ExampleMatcher.matchingAny()
+                .withMatcher("nce", contains())
+                .withMatcher("cas", contains())
+                .withMatcher("name", contains())
+                .withIgnoreCase();
+
+        Example<info.developia.prevengic.dao.Compound> example = Example.of(compoundExample, matcher);
+
+        return compoundRepository.findAll(example).stream()
+                .map(CompoundMapper.MAPPER::entityToDomain)
+                .collect(Collectors.toList());
     }
 
 }

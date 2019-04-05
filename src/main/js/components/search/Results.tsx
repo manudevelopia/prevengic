@@ -8,6 +8,10 @@ export class Results extends React.Component<any, any> {
     super(props);
   }
 
+  private addToSelected(index: number) {
+    this.props.onChange(index);
+  }
+
   public render() {
     let compounds = this.props.results.map((compound: any, index: number) => {
         return <tr key={index}>
@@ -15,7 +19,7 @@ export class Results extends React.Component<any, any> {
           <td>{compound.nce}</td>
           <td>{compound.cas}</td>
           <td>{compound.name}</td>
-          <td><Button color="primary" size="sm">Añadir</Button></td>
+          <td><Button color="primary" size="sm" onClick={() => {this.addToSelected(index)}}>Añadir</Button></td>
         </tr>;
       }
     );

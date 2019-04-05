@@ -60,11 +60,7 @@ task webpack(type: Exec) {
     commandLine "$projectDir/node_modules/.bin/webpack"
 }
 
-build {
-    dependsOn webpack
-}
-
-check.dependsOn jacocoTestReport
+build.dependsOn webpack
 
 jacocoTestReport {
     reports {
@@ -72,3 +68,5 @@ jacocoTestReport {
         csv.enabled false
     }
 }
+
+check.dependsOn jacocoTestReport

@@ -1,8 +1,13 @@
 package info.developia.prevengic.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
-@ResponseStatus(value = HttpStatus.NO_CONTENT, reason = "Compound not found")
 public class CompoundDoesNotExistException extends RuntimeException {
+
+    public CompoundDoesNotExistException() {
+        super("Compound does not exist, please change search criteria");
+    }
+
+    public CompoundDoesNotExistException(String message) {
+        super(message);
+    }
+
 }

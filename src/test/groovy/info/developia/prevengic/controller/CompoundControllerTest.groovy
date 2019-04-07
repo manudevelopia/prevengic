@@ -45,7 +45,7 @@ class CompoundControllerTest extends Specification {
         ResponseEntity<List<Compound>> result = compoundController.findByName("name", null, null)
 
         then:
-        !result.getBody().isEmpty()
+        !result.getBody()
     }
 
     def "test find By Nce"() {
@@ -56,7 +56,7 @@ class CompoundControllerTest extends Specification {
         ResponseEntity<List<Compound>> result = compoundController.findByName(null, "nce", null)
 
         then:
-        !result.getBody().isEmpty()
+        !result.getBody()
     }
 
     def "test find By Cas"() {
@@ -67,7 +67,7 @@ class CompoundControllerTest extends Specification {
         ResponseEntity<List<Compound>> result = compoundController.findByName(null, null, "cas")
 
         then:
-        !result.getBody().isEmpty()
+        !result.getBody()
     }
 
 }

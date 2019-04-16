@@ -71,4 +71,12 @@ public class CompoundServiceImpl implements CompoundService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public Compound findById(Long id) {
+        return compoundRepository.findById(id)
+                .map(CompoundMapper.MAPPER::entityToDomain)
+                .orElseThrow(CompoundDoesNotExistException::new);
+
+    }
+
 }

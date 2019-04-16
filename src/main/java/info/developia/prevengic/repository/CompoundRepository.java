@@ -16,4 +16,6 @@ public interface CompoundRepository extends JpaRepository<Compound, String> {
 
     Optional<List<Compound>> findByCasIgnoreCaseContaining(String cas);
 
+    Optional<Compound> findById(Long id);
+
 }

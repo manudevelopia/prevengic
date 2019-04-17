@@ -8,7 +8,6 @@ import org.mockito.MockitoAnnotations
 import org.springframework.http.ResponseEntity
 import spock.lang.Specification
 
-import static org.mockito.ArgumentMatchers.anyString
 import static org.mockito.Mockito.when
 
 class CompoundControllerTest extends Specification {
@@ -23,7 +22,8 @@ class CompoundControllerTest extends Specification {
 
     def setup() {
         MockitoAnnotations.initMocks(this)
-        compound = new Compound(cas: "CAS", nce: "NCE", name: "Test compound1")
+
+        compound = new Compound(cas: "cas", nce: "nce", name: "Test compound")
     }
 
     def "test get All"() {
@@ -39,10 +39,10 @@ class CompoundControllerTest extends Specification {
 
     def "test find By Name"() {
         given:
-        when(compoundService.findByName(anyString())).thenReturn([compound])
+        when(compoundService.findBy(null, null, "Test compound")).thenReturn([compound])
 
         when:
-        ResponseEntity<List<Compound>> result = compoundController.findByName("name", null, null)
+        ResponseEntity<List<Compound>> result = compoundController.findBy(null, null, "Test compound")
 
         then:
         !result.getBody()
@@ -50,10 +50,10 @@ class CompoundControllerTest extends Specification {
 
     def "test find By Nce"() {
         given:
-        when(compoundService.findByNce(anyString())).thenReturn([compound])
+        when(compoundService.findBy("nce", null, null)).thenReturn([compound])
 
         when:
-        ResponseEntity<List<Compound>> result = compoundController.findByName(null, "nce", null)
+        ResponseEntity<List<Compound>> result = compoundController.findBy("nce", null, null)
 
         then:
         !result.getBody()
@@ -61,10 +61,10 @@ class CompoundControllerTest extends Specification {
 
     def "test find By Cas"() {
         given:
-        when(compoundService.findByCas(anyString())).thenReturn([compound])
+        when(compoundService.findBy(null, "cas", null)).thenReturn([compound])
 
         when:
-        ResponseEntity<List<Compound>> result = compoundController.findByName(null, null, "cas")
+        ResponseEntity<List<Compound>> result = compoundController.findBy(null, "cas", null)
 
         then:
         !result.getBody()

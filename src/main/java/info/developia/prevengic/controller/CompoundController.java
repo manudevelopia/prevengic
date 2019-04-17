@@ -28,11 +28,11 @@ public class CompoundController {
     }
 
     @GetMapping("/find")
-    ResponseEntity<List<Compound>> findByName(@RequestParam(required = false) String name,
-                                        @RequestParam(required = false) String nce,
-                                        @RequestParam(required = false) String cas) {
+    ResponseEntity<List<Compound>> findBy(@RequestParam(required = false) String nce,
+                                          @RequestParam(required = false) String cas,
+                                          @RequestParam(required = false) String name) {
         List<Compound> compounds = compoundService.findBy(nce, cas, name);
-        
+
         return ResponseEntity.ok(compounds);
     }
 

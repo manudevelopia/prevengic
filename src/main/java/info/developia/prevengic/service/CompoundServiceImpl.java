@@ -58,7 +58,7 @@ public class CompoundServiceImpl implements CompoundService {
                 .name(name)
                 .build();
 
-        ExampleMatcher matcher = ExampleMatcher.matchingAny()
+        ExampleMatcher matcher = ExampleMatcher.matchingAll()
                 .withMatcher("nce", contains())
                 .withMatcher("cas", contains())
                 .withMatcher("name", contains())

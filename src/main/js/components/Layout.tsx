@@ -17,7 +17,7 @@ export interface LayoutState {
 
 // 'LayoutProps' describes the shape of props.
 // State is never set so we use the '{}' type.
-export class Layout extends React.Component<any, any> {
+export class Layout extends React.Component<LayoutProps, any> {
 
   constructor(props: LayoutProps) {
     super(props);
@@ -34,7 +34,7 @@ export class Layout extends React.Component<any, any> {
         <Header/>
         <Search onChange={(e: any) => {this.handleUpdateResults(e)}}/>
         <Results results={this.state.results} onChange={(e: number) => {this.handleAddResult(e)}}/>
-        <Selection results={this.state.selection} onChange={(e: number) => {this.handleRemoveSelected(e)}}/>
+        <Selection selection={this.state.selection} onChange={(e: number) => {this.handleRemoveSelected(e)}}/>
       </Container>
     );
   }
@@ -54,5 +54,5 @@ export class Layout extends React.Component<any, any> {
     results.splice(this.state.results[resultIndex], 1);
     this.setState({selection: results})
   }
-  
+
 }

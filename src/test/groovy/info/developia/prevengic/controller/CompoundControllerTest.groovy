@@ -20,10 +20,14 @@ class CompoundControllerTest extends Specification {
 
     Compound compound
 
+    def name = "Test compound"
+    def cas = "cas"
+    def nce = "nce"
+
     def setup() {
         MockitoAnnotations.initMocks(this)
 
-        compound = new Compound(cas: "cas", nce: "nce", name: "Test compound")
+        compound = new Compound(cas: cas, nce: nce, name: name)
     }
 
     def "test get All"() {
@@ -31,21 +35,29 @@ class CompoundControllerTest extends Specification {
         when(compoundService.findAll()).thenReturn([compound])
 
         when:
-        ResponseEntity<List<Compound>> result = compoundController.getAll()
+        ResponseEntity<List<Compound>> results = compoundController.getAll()
 
         then:
-        result.getBody()
+        def result = results.getBody().get(0)
+
+        result.name == name
+        result.cas == cas
+        result.nce == nce
     }
 
     def "test find By Name"() {
         given:
-        when(compoundService.findBy(null, null, "Test compound")).thenReturn([compound])
+        when(compoundService.findBy(null, null, name)).thenReturn([compound])
 
         when:
-        ResponseEntity<List<Compound>> result = compoundController.findBy(null, null, "Test compound")
+        ResponseEntity<List<Compound>> results = compoundController.findBy(null, null, name)
 
         then:
-        !result.getBody()
+        def result = results.getBody().get(0)
+
+        result.name == name
+        result.cas == cas
+        result.nce == nce
     }
 
     def "test find By Nce"() {
@@ -53,10 +65,14 @@ class CompoundControllerTest extends Specification {
         when(compoundService.findBy("nce", null, null)).thenReturn([compound])
 
         when:
-        ResponseEntity<List<Compound>> result = compoundController.findBy("nce", null, null)
+        ResponseEntity<List<Compound>> results = compoundController.findBy(nce, null, null)
 
         then:
-        !result.getBody()
+        def result = results.getBody().get(0)
+
+        result.name == name
+        result.cas == cas
+        result.nce == nce
     }
 
     def "test find By Cas"() {
@@ -64,10 +80,14 @@ class CompoundControllerTest extends Specification {
         when(compoundService.findBy(null, "cas", null)).thenReturn([compound])
 
         when:
-        ResponseEntity<List<Compound>> result = compoundController.findBy(null, "cas", null)
+        ResponseEntity<List<Compound>> results = compoundController.findBy(null, cas, null)
 
         then:
-        !result.getBody()
+        def result = results.getBody().get(0)
+
+        result.name == name
+        result.cas == cas
+        result.nce == nce
     }
 
 }

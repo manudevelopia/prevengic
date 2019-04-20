@@ -15,6 +15,8 @@ export interface LayoutProps {
 export interface LayoutState {
   results: [];
   selection: [];
+  calculations: [];
+  notes: [];
 }
 
 // 'LayoutProps' describes the shape of props.
@@ -26,7 +28,9 @@ export class Layout extends React.Component<LayoutProps, any> {
 
     this.state = {
       results: [],
-      selection: []
+      selection: [],
+      calculations: [],
+      notes: []
     };
   }
 
@@ -35,8 +39,10 @@ export class Layout extends React.Component<LayoutProps, any> {
       <Container fluid={true}>
         <Header/>
         <Search onChange={(e: any) => {this.handleUpdateResults(e)}}/>
-        <Results results={this.state.results} onChange={(e: number) => {this.handleAddResult(e)}}/>
-        <Selection selection={this.state.selection} onChange={(e: number) => {this.handleRemoveSelected(e)}}/>
+        <SearchResults results={this.state.results} onChange={(e: number) => {this.handleAddResult(e)}}/>
+        <CompoundsForm selection={this.state.selection} onChange={(e: number) => {this.handleRemoveSelected(e)}}/>
+        <Calculations  calculations={this.state.calculations} />
+        <NotesAndAdvices notes={this.state.notes}/>
       </Container>
     );
   }

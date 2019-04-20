@@ -52,9 +52,13 @@ export class Layout extends React.Component<LayoutProps, any> {
   }
 
   private handleAddResult(resultIndex: number) : void {
-    let results = this.state.selection.slice();
-    results.push(this.state.results[resultIndex]);
-    this.setState({selection: results})
+    const candidate = this.state.results[resultIndex];
+
+    if (!this.state.selection.find((c: any) => c.name === candidate.name)){
+      let results = this.state.selection.slice();
+      results.push(candidate);
+      this.setState({selection: results})
+    }
   }
 
   private handleRemoveSelected(resultIndex: number) {

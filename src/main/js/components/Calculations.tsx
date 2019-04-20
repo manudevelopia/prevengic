@@ -27,7 +27,7 @@ export class Calculations extends React.Component<any, any> {
     return (
       <Row>
         <Col md={12}>
-          <h4>Resultados</h4>
+          <h4>Resultado del cálculo</h4>
           <Table>
             <thead>
             <tr>

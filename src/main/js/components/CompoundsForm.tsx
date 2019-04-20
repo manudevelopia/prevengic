@@ -2,7 +2,7 @@ import * as React from "react";
 import {Button, Col, Form, Input, Row, Table} from "reactstrap";
 
 
-export class Selection extends React.Component<any, any> {
+export class CompoundsForm extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);

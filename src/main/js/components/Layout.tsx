@@ -1,9 +1,11 @@
 import * as React from "react";
 import {Container} from "reactstrap";
 import {Search} from "./search/Search";
-import {Results} from "./search/Results";
-import {Selection} from "./search/Selection";
-import {Header} from "./search/Header";
+import {SearchResults} from "./search/SearchResults";
+import {CompoundsForm} from "./CompoundsForm";
+import {Header} from "./Header";
+import {Calculations} from "./Calculations";
+import {NotesAndAdvices} from "./NotesAndAdvices";
 
 export interface LayoutProps {
   compiler: string;

@@ -2,7 +2,7 @@ import * as React from "react";
 import {Button, Col, Row, Table} from "reactstrap";
 
 
-export class Results extends React.Component<any, any> {
+export class SearchResults extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);

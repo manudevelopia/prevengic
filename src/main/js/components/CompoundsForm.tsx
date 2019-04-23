@@ -67,7 +67,7 @@ export class CompoundsForm extends React.Component<any, any> {
   private handleSubmit(e: any) {
     e.preventDefault();
 
-    fetch('/api/edit', {
+    fetch('/api/reports/create', {
       method: 'POST',
       credentials: 'same-origin',
       headers: {'Content-Type': 'application/json'},

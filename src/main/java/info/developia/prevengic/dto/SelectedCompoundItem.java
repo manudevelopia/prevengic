@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class SelectedCompoundItem {
 
-    private Long id;
+    private String name;
 
     private Double concentration;
     private Double exposition;

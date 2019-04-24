@@ -8,14 +8,8 @@ public interface CompoundService {
 
     List<Compound> findAll();
 
-    List<Compound> findByName(String name);
-
-    List<Compound> findByNce(String nce);
-
-    List<Compound> findByCas(String cas);
+    Compound findByName(String name);
 
     List<Compound> findBy(String nce, String cas, String name);
-
-    Compound findById(Long id);
 
 }

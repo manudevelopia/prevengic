@@ -30,22 +30,8 @@ public class CompoundServiceImpl implements CompoundService {
     }
 
     @Override
-    public List<Compound> findByName(String name) {
-        return compoundRepository.findByNameIgnoreCaseContaining(name)
-                .map(CompoundMapper.MAPPER::entityToDomain)
-                .orElseThrow(CompoundDoesNotExistException::new);
-    }
-
-    @Override
-    public List<Compound> findByNce(String nce) {
-        return compoundRepository.findByNceIgnoreCaseContaining(nce)
-                .map(CompoundMapper.MAPPER::entityToDomain)
-                .orElseThrow(CompoundDoesNotExistException::new);
-    }
-
-    @Override
-    public List<Compound> findByCas(String cas) {
-        return compoundRepository.findByCasIgnoreCaseContaining(cas)
+    public Compound findByName(String name) {
+        return compoundRepository.findByName(name)
                 .map(CompoundMapper.MAPPER::entityToDomain)
                 .orElseThrow(CompoundDoesNotExistException::new);
     }
@@ -69,14 +55,6 @@ public class CompoundServiceImpl implements CompoundService {
         return compoundRepository.findAll(example).stream()
                 .map(CompoundMapper.MAPPER::entityToDomain)
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public Compound findById(Long id) {
-        return compoundRepository.findById(id)
-                .map(CompoundMapper.MAPPER::entityToDomain)
-                .orElseThrow(CompoundDoesNotExistException::new);
-
     }
 
 }

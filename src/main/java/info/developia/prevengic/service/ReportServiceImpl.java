@@ -47,7 +47,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     private CompoundReportResult processCompound(SelectedCompoundItem selectedCompoundItem) {
-        Compound compound = compoundService.findById(selectedCompoundItem.getId());
+        Compound compound = compoundService.findByName(selectedCompoundItem.getName());
 
         // TODO: calculate with compound with compound exposure and concentration
 

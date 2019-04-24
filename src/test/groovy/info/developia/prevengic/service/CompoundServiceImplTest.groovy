@@ -1,28 +1,20 @@
 package info.developia.prevengic.service
 
-
 import info.developia.prevengic.model.Compound
 import info.developia.prevengic.repository.CompoundRepository
-import org.mockito.InjectMocks
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 import spock.lang.Specification
 
-import static org.mockito.ArgumentMatchers.anyString
-import static org.mockito.Mockito.when
-
 class CompoundServiceImplTest extends Specification {
-    @Mock
-    CompoundRepository compoundRepository
 
-    @InjectMocks
-    CompoundServiceImpl compoundServiceImpl
+    CompoundRepository compoundRepository
+    CompoundServiceImpl compoundService
 
     Compound compound
     info.developia.prevengic.dao.Compound compoundDao
 
     def setup() {
-        MockitoAnnotations.initMocks(this)
+        compoundRepository = Mock()
+        compoundService = new CompoundServiceImpl(compoundRepository)
 
         compound = new Compound(cas: "CAS", nce: "NCE", name: "Test compound1")
         compoundDao = new info.developia.prevengic.dao.Compound(cas: "CAS", nce: "NCE", name: "Test compound1")
@@ -30,10 +22,10 @@ class CompoundServiceImplTest extends Specification {
 
     def "test find All"() {
         given:
-        when(compoundRepository.findAll()).thenReturn([compoundDao])
+        compoundRepository.findAll() >> [compoundDao]
 
         when:
-        List<Compound> result = compoundServiceImpl.findAll()
+        List<Compound> result = compoundService.findAll()
 
         then:
         result == [compound]
@@ -41,10 +33,10 @@ class CompoundServiceImplTest extends Specification {
 
     def "test find By Name"() {
         given:
-        when(compoundRepository.findByNameIgnoreCaseContaining(anyString())).thenReturn(Optional.of([compoundDao]))
+        compoundRepository.findAll(_) >> [compoundDao]
 
         when:
-        List<Compound> result = compoundServiceImpl.findByName("name")
+        List<Compound> result = compoundService.findBy("", "", "compound")
 
         then:
         result == [compound]
@@ -52,10 +44,10 @@ class CompoundServiceImplTest extends Specification {
 
     def "test find By Nce"() {
         given:
-        when(compoundRepository.findByNceIgnoreCaseContaining(anyString())).thenReturn(Optional.of([compoundDao]))
+        compoundRepository.findAll(_) >> [compoundDao]
 
         when:
-        List<Compound> result = compoundServiceImpl.findByNce("nce")
+        List<Compound> result = compoundService.findBy(null, "nce", null)
 
         then:
         result == [compound]
@@ -63,10 +55,10 @@ class CompoundServiceImplTest extends Specification {
 
     def "test find By Cas"() {
         given:
-        when(compoundRepository.findByCasIgnoreCaseContaining(anyString())).thenReturn(Optional.of([compoundDao]))
+        compoundRepository.findAll(_) >> [compoundDao]
 
         when:
-        List<Compound> result = compoundServiceImpl.findByCas("cas")
+        List<Compound> result = compoundService.findBy("cas", null, null)
 
         then:
         result == [compound]

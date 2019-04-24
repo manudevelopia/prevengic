@@ -2,7 +2,6 @@ package info.developia.prevengic.repository
 
 import info.developia.prevengic.dao.Compound
 import info.developia.prevengic.repository.CompoundRepository
-import org.junit.Assert
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import spock.lang.Specification
@@ -21,28 +20,12 @@ class CompoundRepositoryTest extends Specification {
         compoundRepository.save(compound)
     }
 
-    def "testFindByNameIgnoreCaseContaining"() {
+    def "find compound by name"() {
         when:
-        Compound result = compoundRepository.findByNameIgnoreCaseContaining("Test compound1").get().get(0)
+        Compound result = compoundRepository.findByName("Test compound1").get()
 
         then:
-        Assert.assertTrue(result.name.contains("Test compound1"))
-    }
-
-    def "testFindByNceIgnoreCaseContaining"() {
-        when:
-        Compound result = compoundRepository.findByNceIgnoreCaseContaining("NCE").get().get(0)
-
-        then:
-        Assert.assertEquals("NCE", result.nce)
-    }
-
-    def "testFindByCasIgnoreCaseContaining"() {
-        when:
-        Compound result = compoundRepository.findByCasIgnoreCaseContaining("CAS").get().get(0)
-
-        then:
-        Assert.assertEquals("CAS", result.cas)
+        result.name.contains("Test compound1")
     }
 
 }

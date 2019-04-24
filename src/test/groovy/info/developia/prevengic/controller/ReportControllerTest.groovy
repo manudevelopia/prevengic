@@ -28,10 +28,10 @@ class ReportControllerTest extends Specification {
         MockitoAnnotations.initMocks(this)
 
         compoundReportForm = new SelectedCompoundForm(compounds: [
-                new SelectedCompoundItem(id: 1L, concentration: 1D, exposition: 2D),
-                new SelectedCompoundItem(id: 2L, concentration: 2D, exposition: 3D),
-                new SelectedCompoundItem(id: 3L, concentration: 3D, exposition: 4D),
-                new SelectedCompoundItem(id: 4L, concentration: 4D, exposition: 5D)
+                new SelectedCompoundItem(name: "Test Compound 1", concentration: 1D, exposition: 2D),
+                new SelectedCompoundItem(name: "Test Compound 2", concentration: 2D, exposition: 3D),
+                new SelectedCompoundItem(name: "Test Compound 3", concentration: 3D, exposition: 4D),
+                new SelectedCompoundItem(name: "Test Compound 4", concentration: 4D, exposition: 5D)
         ])
     }
 

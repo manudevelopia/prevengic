@@ -49,11 +49,11 @@ insert into CHEMICAL_PROFILES_WARNING_ADVICES(CHEMICAL_PROFILE_ID, WARNING_ADVIC
 (6, 6),
 (7, 7);
 
-insert into COMPOUNDS(id, nce, cas, name, chemical_profile_id) values
-(1, 'nce1', '149-57-5', 'Ácido 2-etilhexanoico', 1),
-(2, 'nce2', '150-76-5', '4-Metoxifenol', 2),
-(3, 'nce3', '151-50-8', 'Cianuro de potasio', 3),
-(4, 'nce4', '151-56-4', 'Etilenimina', 4),
-(5, 'nce5', '151-67-7', 'Halotano', 5),
-(6, null , null, 'Partículas (insolubles o poco solubles) no especificadas de otra forma: Fracción inhalable', 6),
-(7, null, null, 'Partículas (insolubles o poco solubles) no especificadas de otra forma: Fracción respirable', 7);
+insert into COMPOUNDS(nce, cas, name, chemical_profile_id) values
+('nce1', '149-57-5', 'Ácido 2-etilhexanoico', 1),
+('nce2', '150-76-5', '4-Metoxifenol', 2),
+('nce3', '151-50-8', 'Cianuro de potasio', 3),
+('nce4', '151-56-4', 'Etilenimina', 4),
+('nce5', '151-67-7', 'Halotano', 5),
+(null , null, 'Partículas (insolubles o poco solubles) no especificadas de otra forma: Fracción inhalable', 6),
+(null, null, 'Partículas (insolubles o poco solubles) no especificadas de otra forma: Fracción respirable', 7);

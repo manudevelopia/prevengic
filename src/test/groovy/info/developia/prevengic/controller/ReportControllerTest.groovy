@@ -4,28 +4,21 @@ import info.developia.prevengic.dto.SelectedCompoundForm
 import info.developia.prevengic.dto.SelectedCompoundItem
 import info.developia.prevengic.model.Report
 import info.developia.prevengic.service.ReportService
-import org.mockito.InjectMocks
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import spock.lang.Specification
 
-import static org.mockito.ArgumentMatchers.any
-import static org.mockito.Mockito.when
-
 class ReportControllerTest extends Specification {
 
-    @Mock
-    ReportService reportService
-
-    @InjectMocks
-    ReportController reportController
-
-    SelectedCompoundForm compoundReportForm
+    def reportService
+    def reportController
+    def compoundReportForm
+    def report
 
     def setup() {
-        MockitoAnnotations.initMocks(this)
+        reportService = Mock(ReportService)
+        reportController = new ReportController(reportService)
+        report = new Report()
 
         compoundReportForm = new SelectedCompoundForm(compounds: [
                 new SelectedCompoundItem(name: "Test Compound 1", concentration: 1D, exposition: 2D),
@@ -35,9 +28,9 @@ class ReportControllerTest extends Specification {
         ])
     }
 
-    def "test get All"() {
+    def "test get all Reports controller"() {
         given:
-        when(reportService.findAll()).thenReturn([new Report()])
+        reportService.findAll() >> [report]
 
         when:
         ResponseEntity<List<Report>> result = reportController.getAll()
@@ -47,9 +40,9 @@ class ReportControllerTest extends Specification {
         result.getBody() != null
     }
 
-    def "test create"() {
+    def "test create a Report"() {
         given:
-        when(reportService.create(any() as SelectedCompoundForm)).thenReturn(new Report())
+        reportService.create(_ as SelectedCompoundForm) >> report
 
         when:
         ResponseEntity result = reportController.create(compoundReportForm)

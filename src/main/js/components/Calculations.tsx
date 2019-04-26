@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Button, Col, Row, Table} from "reactstrap";
+import {Col, Row, Table} from "reactstrap";
 
 
 export class Calculations extends React.Component<any, any> {
@@ -17,9 +17,9 @@ export class Calculations extends React.Component<any, any> {
         return <tr key={index}>
           <th scope="row">{index + 1}</th>
           <td>{compound.name}</td>
-          <td>{compound.ed}</td>
-          <td>{compound.vlaed}</td>
-          <td>{compound.i}</td>
+          <td>{compound.exposition.ed}</td>
+          <td>{compound.exposition.vlaEd}</td>
+          <td>{compound.exposition.i}</td>
         </tr>;
       }
     );

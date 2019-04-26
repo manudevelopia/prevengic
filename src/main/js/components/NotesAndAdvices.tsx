@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Button, Col, Row, Table} from "reactstrap";
+import {Col, Row, Table} from "reactstrap";
 
 
 export class NotesAndAdvices extends React.Component<any, any> {
@@ -13,7 +13,7 @@ export class NotesAndAdvices extends React.Component<any, any> {
   }
 
   public render() {
-    let compounds = this.props.notes.map((compound: any, index: number) => {
+    let compounds = this.props.results.map((compound: any, index: number) => {
         return <tr key={index}>
           <th scope="row">{index + 1}</th>
           <td>{compound.name}</td>

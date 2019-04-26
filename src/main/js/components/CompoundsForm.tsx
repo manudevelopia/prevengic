@@ -76,8 +76,8 @@ export class CompoundsForm extends React.Component<any, any> {
         .then((response) => {
           return response.json();
         })
-        .then((savedSimulation) => {
-          this.props.history.push('/simulation/' + savedSimulation.id);
+      .then((report) => {
+        this.props.onUpdate(report.compoundReportResults);
         })
         .catch((e) => {
           return e;
@@ -88,18 +88,18 @@ export class CompoundsForm extends React.Component<any, any> {
     const target = e.target;
 
     const value = target.value;
-    const compoundId = target.dataset.compound;
-    const name = target.name;
+    const name = target.dataset.compound;
+    const param = target.name;
 
     const compounds = this.state.compounds.slice();
-    let compound = compounds.find((c: any) => c.compound === compoundId);
+    let compound = compounds.find((c: any) => c.name === name);
 
     if (compound) {
-        compound[name] = value;
+      compound[param] = value;
     } else {
         compounds.push({
-            compound: compoundId,
-            [name]: value
+          name: name,
+          [param]: value
         });
     }
 

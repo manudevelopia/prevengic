@@ -1,8 +1,8 @@
 package info.developia.prevengic.controller
 
-import info.developia.prevengic.dao.Report
 import info.developia.prevengic.dto.SelectedCompoundForm
 import info.developia.prevengic.dto.SelectedCompoundItem
+import info.developia.prevengic.model.Report
 import info.developia.prevengic.service.ReportService
 import org.mockito.InjectMocks
 import org.mockito.Mock
@@ -49,7 +49,7 @@ class ReportControllerTest extends Specification {
 
     def "test create"() {
         given:
-        when(reportService.create(any() as SelectedCompoundForm)).thenReturn(new info.developia.prevengic.model.Report())
+        when(reportService.create(any() as SelectedCompoundForm)).thenReturn(new Report())
 
         when:
         ResponseEntity result = reportController.create(compoundReportForm)

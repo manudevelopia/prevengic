@@ -1,9 +1,7 @@
 package info.developia.prevengic.dao;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,30 +9,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.List;
-import java.util.Set;
 
-@Data
 @Entity
 @Table(name = "REPORTS")
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class Report {
+@Data
+public class CompoundReportResult {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "report")
-    private Set<Workarea> workareas;
+    @OneToOne
+    private Compound compound;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private ExpositionResult shortExposition;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private ExpositionResult exposition;
 
     @ManyToOne
-    private User user;
-
-    @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
-    private List<CompoundReportResult> compoundReportResults;
+    private Report report;
 
 }

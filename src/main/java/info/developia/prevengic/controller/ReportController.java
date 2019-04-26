@@ -1,7 +1,7 @@
 package info.developia.prevengic.controller;
 
-import info.developia.prevengic.dao.Report;
 import info.developia.prevengic.dto.SelectedCompoundForm;
+import info.developia.prevengic.model.Report;
 import info.developia.prevengic.service.ReportService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -40,9 +40,15 @@ export class Layout extends React.Component<LayoutProps, any> {
         <Header/>
         <Search onChange={(e: any) => {this.handleUpdateResults(e)}}/>
         <SearchResults results={this.state.results} onChange={(e: number) => {this.handleAddResult(e)}}/>
-        <CompoundsForm selection={this.state.selection} onChange={(e: number) => {this.handleRemoveSelected(e)}}/>
+        <CompoundsForm selection={this.state.selection}
+                       onChange={(e: number) => {
+                         this.handleRemoveSelected(e)
+                       }}
+                       onUpdate={(e: any) => {
+                         this.handleUpdate(e)
+                       }}/>
         <Calculations  calculations={this.state.calculations} />
-        <NotesAndAdvices notes={this.state.notes}/>
+        <NotesAndAdvices results={this.state.calculations}/>
       </Container>
     );
   }
@@ -65,6 +71,10 @@ export class Layout extends React.Component<LayoutProps, any> {
     let results = this.state.selection.slice();
     results.splice(this.state.results[resultIndex], 1);
     this.setState({selection: results})
+  }
+
+  private handleUpdate(calculations: any) {
+    this.setState({calculations: calculations});
   }
 
 }

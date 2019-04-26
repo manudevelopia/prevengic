@@ -1,10 +1,14 @@
 package info.developia.prevengic.service;
 
+import info.developia.prevengic.dao.Compound;
+import info.developia.prevengic.dao.CompoundReportResult;
+import info.developia.prevengic.dao.ExpositionResult;
 import info.developia.prevengic.dao.Report;
 import info.developia.prevengic.dto.SelectedCompoundForm;
 import info.developia.prevengic.dto.SelectedCompoundItem;
-import info.developia.prevengic.model.Compound;
-import info.developia.prevengic.model.CompoundReportResult;
+import info.developia.prevengic.exception.CompoundDoesNotExistException;
+import info.developia.prevengic.mapper.ReportMapper;
+import info.developia.prevengic.repository.CompoundRepository;
 import info.developia.prevengic.repository.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,27 +21,32 @@ public class ReportServiceImpl implements ReportService {
 
     private final ReportRepository reportRepository;
 
-    private final CompoundService compoundService;
+    private final CompoundRepository compoundRepository;
 
     @Autowired
-    public ReportServiceImpl(ReportRepository reportRepository, CompoundService compoundService) {
+    public ReportServiceImpl(ReportRepository reportRepository, CompoundRepository compoundRepository) {
         this.reportRepository = reportRepository;
-        this.compoundService = compoundService;
+        this.compoundRepository = compoundRepository;
     }
 
     @Override
-    public List<Report> findAll() {
-        return reportRepository.findAll();
+    public List<info.developia.prevengic.model.Report> findAll() {
+        return reportRepository.findAll().stream()
+                .map(ReportMapper.MAPPER::entityToDomain)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Report create(SelectedCompoundForm selectedCompoundForm) {
-        Report report = new Report();
-
-        // TODO: add compounds results to entity
+    public info.developia.prevengic.model.Report create(SelectedCompoundForm selectedCompoundForm) {
         List<CompoundReportResult> result = processSelectedCompounds(selectedCompoundForm);
 
-        return reportRepository.save(report);
+        Report report = Report.builder()
+                .compoundReportResults(result)
+                .build();
+
+        reportRepository.save(report);
+
+        return ReportMapper.MAPPER.entityToDomain(report);
     }
 
     private List<CompoundReportResult> processSelectedCompounds(SelectedCompoundForm selectedCompoundForm) {
@@ -47,11 +56,26 @@ public class ReportServiceImpl implements ReportService {
     }
 
     private CompoundReportResult processCompound(SelectedCompoundItem selectedCompoundItem) {
-        Compound compound = compoundService.findByName(selectedCompoundItem.getName());
+        Compound compound = compoundRepository.findByName(selectedCompoundItem.getName())
+                .orElseThrow(CompoundDoesNotExistException::new);
 
-        // TODO: calculate with compound with compound exposure and concentration
+        // TODO: replace hour values with constants
+        ExpositionResult exposition = calculateExposition(compound, 8);
+        ExpositionResult shortExposition = calculateExposition(compound, 1);
 
         return CompoundReportResult.builder()
+                .compound(compound)
+                .exposition(exposition)
+                .shortExposition(shortExposition)
+                .build();
+    }
+
+    private ExpositionResult calculateExposition(Compound compound, int hours) {
+        return ExpositionResult.builder()
+                // TODO: replace Math.random() with real calculations
+                .ed(Math.random())
+                .vlaEd(Math.random())
+                .i(Math.random())
                 .build();
     }
 

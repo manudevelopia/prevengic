@@ -5,14 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Report {
+public class ExpositionResult {
 
-    private List<CompoundReportResult> compoundReportResults;
+    private Double ed;
+    private Double vlaEd;
+    private Double i;
 
 }

@@ -49,7 +49,7 @@ class ReportControllerTest extends Specification {
 
     def "test create"() {
         given:
-        when(reportService.create(any() as SelectedCompoundForm)).thenReturn(new Report())
+        when(reportService.create(any() as SelectedCompoundForm)).thenReturn(new info.developia.prevengic.model.Report())
 
         when:
         ResponseEntity result = reportController.create(compoundReportForm)

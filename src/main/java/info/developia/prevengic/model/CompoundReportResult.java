@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Builder
 @Data
@@ -18,7 +20,7 @@ public class CompoundReportResult {
     private ExpositionResult shortExposition;
     private ExpositionResult exposition;
 
-    private List<String> fh;
-    private List<String> notes;
+    private Set<WarningAdvice> warningAdvices;
+    private Set<Note> notes;
 
 }

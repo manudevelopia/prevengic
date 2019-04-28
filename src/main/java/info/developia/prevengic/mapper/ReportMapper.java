@@ -18,5 +18,8 @@ public interface ReportMapper {
     List<info.developia.prevengic.model.Report> entityToDomain(List<Report> entity);
 
     @Mapping(source = "compound.name", target = "name")
+    @Mapping(source = "compound.chemicalProfile.warningAdvices", target = "warningAdvices")
+    @Mapping(source = "compound.chemicalProfile.notes", target = "notes")
     info.developia.prevengic.model.CompoundReportResult entityToDomain(CompoundReportResult entity);
+
 }

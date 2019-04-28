@@ -13,12 +13,22 @@ export class NotesAndAdvices extends React.Component<any, any> {
   }
 
   public render() {
+
+    let extractCodes = (c: any) => {
+      let codes: any = [];
+      c.forEach((c: any) => {
+        codes.push(c.code);
+      });
+
+      return codes.join(', ');
+    }
+
     let compounds = this.props.results.map((compound: any, index: number) => {
         return <tr key={index}>
           <th scope="row">{index + 1}</th>
           <td>{compound.name}</td>
-          <td>{compound.fh}</td>
-          <td>{compound.notes}</td>
+          <td>{extractCodes(compound.warningAdvices)}</td>
+          <td>{extractCodes(compound.notes)}</td>
         </tr>;
       }
     );

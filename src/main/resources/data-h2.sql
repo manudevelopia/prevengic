@@ -33,6 +33,7 @@ insert into WARNING_ADVICES(id, code, description) values
 
 insert into CHEMICAL_PROFILES_NOTES(CHEMICAL_PROFILE_ID, NOTES_ID ) values
 (1, 1),
+(1, 2),
 (2, 2),
 (3, 3),
 (4, 4),
@@ -42,6 +43,7 @@ insert into CHEMICAL_PROFILES_NOTES(CHEMICAL_PROFILE_ID, NOTES_ID ) values
 
 insert into CHEMICAL_PROFILES_WARNING_ADVICES(CHEMICAL_PROFILE_ID, WARNING_ADVICES_ID ) values
 (1, 1),
+(1, 2),
 (2, 2),
 (3, 3),
 (4, 4),

@@ -13,22 +13,12 @@ export class NotesAndAdvices extends React.Component<any, any> {
   }
 
   public render() {
-
-    let extractCodes = (c: any) => {
-      let codes: any = [];
-      c.forEach((c: any) => {
-        codes.push(c.code);
-      });
-
-      return codes.join(', ');
-    }
-
     let compounds = this.props.results.map((compound: any, index: number) => {
         return <tr key={index}>
           <th scope="row">{index + 1}</th>
           <td>{compound.name}</td>
-          <td>{extractCodes(compound.warningAdvices)}</td>
-          <td>{extractCodes(compound.notes)}</td>
+          <td>{this.extractCodes(compound.warningAdvices)}</td>
+          <td>{this.extractCodes(compound.notes)}</td>
         </tr>;
       }
     );
@@ -44,7 +34,6 @@ export class NotesAndAdvices extends React.Component<any, any> {
               <th>Nombre</th>
               <th>FH</th>
               <th>Notes</th>
-              <th/>
             </tr>
             </thead>
             <tbody>{compounds}</tbody>
@@ -52,6 +41,15 @@ export class NotesAndAdvices extends React.Component<any, any> {
         </Col>
       </Row>
     );
+  }
+
+  private extractCodes(c: any): string{
+    let codes: any = [];
+    c.forEach((c: any) => {
+      codes.push(c.code);
+    });
+
+    return codes.join(', ');
   }
 
 }

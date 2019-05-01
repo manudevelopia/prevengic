@@ -6,6 +6,8 @@ import {CompoundsForm} from "./CompoundsForm";
 import {Header} from "./Header";
 import {Calculations} from "./Calculations";
 import {NotesAndAdvices} from "./NotesAndAdvices";
+import {Notes} from "./Notes";
+import {WarningAdvices} from "./WarningAdvices";
 
 export interface LayoutProps {
   compiler: string;
@@ -30,7 +32,8 @@ export class Layout extends React.Component<LayoutProps, any> {
       results: [],
       selection: [],
       calculations: [],
-      notes: []
+      notes: [],
+      warningAdvices: []
     };
   }
 
@@ -49,6 +52,8 @@ export class Layout extends React.Component<LayoutProps, any> {
                        }}/>
         <Calculations  calculations={this.state.calculations} />
         <NotesAndAdvices results={this.state.calculations}/>
+        <Notes notes={this.state.notes}/>
+        <WarningAdvices warningAdvices={this.state.warningAdvices}/>
       </Container>
     );
   }
@@ -73,8 +78,12 @@ export class Layout extends React.Component<LayoutProps, any> {
     this.setState({selection: results})
   }
 
-  private handleUpdate(calculations: any) {
-    this.setState({calculations: calculations});
+  private handleUpdate(report: any) {
+    this.setState({
+        calculations: report.compoundReportResults,
+        notes: report.notes,
+        warningAdvices: report.warningAdvices
+    });
   }
 
 }

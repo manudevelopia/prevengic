@@ -77,7 +77,7 @@ export class CompoundsForm extends React.Component<any, any> {
           return response.json();
         })
       .then((report) => {
-        this.props.onUpdate(report.compoundReportResults);
+        this.props.onUpdate(report);
         })
         .catch((e) => {
           return e;

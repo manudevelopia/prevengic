@@ -52,8 +52,8 @@ export class Layout extends React.Component<LayoutProps, any> {
                        }}/>
         <Calculations  calculations={this.state.calculations} />
         <NotesAndAdvices results={this.state.calculations}/>
-        <Notes notes={this.state.notes}/>
         <WarningAdvices warningAdvices={this.state.warningAdvices}/>
+        <Notes notes={this.state.notes}/>
       </Container>
     );
   }

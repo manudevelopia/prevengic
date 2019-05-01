@@ -21,6 +21,8 @@ public class Report {
     private Set<WarningAdvice> warningAdvices;
     private Set<Note> notes;
 
+    // TODO: refactor those method to mananage null collection
+
     public Set<WarningAdvice> getWarningAdvices(){
         return compoundReportResults.stream()
                 .map(CompoundReportResult::getWarningAdvices)

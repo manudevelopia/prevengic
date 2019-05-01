@@ -19,8 +19,8 @@ insert into NOTES(id, code, description) values
 (3, 'note-code3', 'note description 3'),
 (4, 'note-code4', 'note description 4'),
 (5, 'note-code5', 'note description 5'),
-(6, 'note-code5', 'note description 6'),
-(7, 'note-code5', 'note description 7');
+(6, 'note-code6', 'note description 6'),
+(7, 'note-code7', 'note description 7');
 
 insert into WARNING_ADVICES(id, code, description) values
 (1, 'warning-code1', 'warning description 1'),
@@ -28,12 +28,13 @@ insert into WARNING_ADVICES(id, code, description) values
 (3, 'warning-code3', 'warning description 3'),
 (4, 'warning-code4', 'warning description 4'),
 (5, 'warning-code5', 'warning description 5'),
-(6, 'warning-code5', 'warning description 6'),
-(7, 'warning-code5', 'warning description 7');
+(6, 'warning-code6', 'warning description 6'),
+(7, 'warning-code7', 'warning description 7');
 
 insert into CHEMICAL_PROFILES_NOTES(CHEMICAL_PROFILE_ID, NOTES_ID ) values
 (1, 1),
 (1, 2),
+(2, 1),
 (2, 2),
 (3, 3),
 (4, 4),

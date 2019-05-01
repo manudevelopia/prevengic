@@ -1,4 +1,6 @@
 # PrevenGIC
+[![Build Status](https://travis-ci.org/manudevelopia/prevengic.svg?branch=master)](https://travis-ci.org/manudevelopia/prevengic)
+[![Coverage Status](https://coveralls.io/repos/github/manudevelopia/prevengic/badge.svg?branch=master)](https://coveralls.io/github/manudevelopia/prevengic?branch=master)
 
 ## Description
 This application tries to support Chemical pollution contaminators calculation on Safety & Security report

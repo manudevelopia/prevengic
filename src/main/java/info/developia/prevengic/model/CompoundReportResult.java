@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 @Builder
@@ -20,6 +18,7 @@ public class CompoundReportResult {
     private ExpositionResult shortExposition;
     private ExpositionResult exposition;
 
+    // TODO: maybe? refactor those collection to String type, to avoid data duplicity in payload
     private Set<WarningAdvice> warningAdvices;
     private Set<Note> notes;
 

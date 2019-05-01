@@ -26,8 +26,8 @@ class ReportServiceImplTest extends Specification {
 
     def "test find All"() {
         given:
-        def reportDao = new Report()
-        def reportDto = new info.developia.prevengic.model.Report()
+        def reportDao = new Report(compoundReportResults: [])
+        def reportDto = new info.developia.prevengic.model.Report( compoundReportResults: [])
 
         reportRepository.findAll() >> [reportDao]
 

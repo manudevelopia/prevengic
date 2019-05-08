@@ -7,9 +7,9 @@ export class Search extends React.Component<any, any> {
     super(props);
 
     this.state = {
-      nce: undefined,
-      cas: undefined,
-      name: undefined
+      nce: '',
+      cas: '',
+      name: ''
     }
   }
 
@@ -39,8 +39,6 @@ export class Search extends React.Component<any, any> {
                   <Input type="text" name="nce" id="nce" placeholder="Buscar por Nº CE"
                          onChange={(e: any) => this.handleChange(e)}/>
                 </FormGroup>
-                <Button color="primary" size="sm"
-                        onClick={() => this.handleSearchCompoundBy('nce=' + this.state.nce)}>Buscar por Nº CE</Button>
               </Col>
               <Col md={3}>
                 <FormGroup>
@@ -48,8 +46,6 @@ export class Search extends React.Component<any, any> {
                   <Input type="text" name="cas" id="cas" placeholder="Buscar por CAS"
                          onChange={(e: any) => this.handleChange(e)}/>
                 </FormGroup>
-                <Button color="primary" size="sm"
-                        onClick={() => this.handleSearchCompoundBy('cas=' + this.state.cas)}>Buscar por CAS</Button>
               </Col>
               <Col md={6}>
                 <FormGroup>
@@ -57,14 +53,24 @@ export class Search extends React.Component<any, any> {
                   <Input type="text" name="name" id="name" placeholder="Buscar por Nombre"
                          onChange={(e: any) => this.handleChange(e)}/>
                 </FormGroup>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={2}>
                 <Button color="primary" size="sm"
-                        onClick={() => this.handleSearchCompoundBy('name=' + this.state.name)}>Buscar por Nombre</Button>
+                        onClick={() => this.handleSearchCompoundBy(
+                          'nce=' + this.state.nce +
+                          '&cas=' + this.state.cas +
+                          '&name=' + this.state.name)}>Buscar</Button>
+                <Button color={"primary"} size={"sm"}
+                        onClick={() => this.cleanSearchFields()}> Limpiar</Button>
               </Col>
             </Row>
           </Form>
         </Col>
       </Row>
-    );
+    )
+      ;
   }
 
   private handleChange(event: any) {
@@ -72,18 +78,19 @@ export class Search extends React.Component<any, any> {
     const value = (target.type === 'checkbox' || target.type === 'radio') ? target.checked : target.value;
     const name = target.name;
 
-    this.cleanSearchFields();
+    //this.cleanSearchFields();
 
     this.setState({
       [name]: value
     });
   }
 
+  // TODO: clean form fields
   private cleanSearchFields() {
     this.setState({
-      nce: undefined,
-      cas: undefined,
-      name: undefined
+      nce: '',
+      cas: '',
+      name: ''
     });
   }
 

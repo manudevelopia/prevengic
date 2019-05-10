@@ -1,6 +1,5 @@
 package info.developia.prevengic.service;
 
-import info.developia.prevengic.exception.CompoundDoesNotExistException;
 import info.developia.prevengic.mapper.CompoundMapper;
 import info.developia.prevengic.model.Compound;
 import info.developia.prevengic.repository.CompoundRepository;
@@ -27,13 +26,6 @@ public class CompoundServiceImpl implements CompoundService {
     @Override
     public List<Compound> findAll() {
         return CompoundMapper.MAPPER.entityToDomain(compoundRepository.findAll());
-    }
-
-    @Override
-    public Compound findByName(String name) {
-        return compoundRepository.findByName(name)
-                .map(CompoundMapper.MAPPER::entityToDomain)
-                .orElseThrow(CompoundDoesNotExistException::new);
     }
 
     @Override

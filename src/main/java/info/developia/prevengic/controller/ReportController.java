@@ -23,14 +23,14 @@ public class ReportController {
     }
 
     @GetMapping("/all")
-    ResponseEntity<List<Report>> getAll() {
+    public ResponseEntity<List<Report>> getAll() {
         List<Report> reports = reportService.findAll();
 
         return ResponseEntity.ok(reports);
     }
 
     @PostMapping("/create")
-    ResponseEntity create(@RequestBody SelectedCompoundForm selectedCompoundForm) {
+    public ResponseEntity create(@RequestBody SelectedCompoundForm selectedCompoundForm) {
         Report report = reportService.create(selectedCompoundForm);
 
         return ResponseEntity.ok(report);

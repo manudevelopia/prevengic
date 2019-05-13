@@ -8,9 +8,6 @@ export class Calculations extends React.Component<any, any> {
     super(props);
   }
 
-  private addToSelected(index: number) {
-    this.props.onChange(index);
-  }
 
   public render() {
     let compounds = this.props.calculations.map((compound: any, index: number) => {

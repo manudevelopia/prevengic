@@ -37,6 +37,7 @@ export class Search extends React.Component<any, any> {
                 <FormGroup>
                   <Label for="nce">Nº CE</Label>
                   <Input type="text" name="nce" id="nce" placeholder="Buscar por Nº CE"
+                         value={this.state.nce}
                          onChange={(e: any) => this.handleChange(e)}/>
                 </FormGroup>
               </Col>
@@ -44,6 +45,7 @@ export class Search extends React.Component<any, any> {
                 <FormGroup>
                   <Label for="name">CAS</Label>
                   <Input type="text" name="cas" id="cas" placeholder="Buscar por CAS"
+                         value={this.state.cas}
                          onChange={(e: any) => this.handleChange(e)}/>
                 </FormGroup>
               </Col>
@@ -51,6 +53,7 @@ export class Search extends React.Component<any, any> {
                 <FormGroup>
                   <Label for="name">Nombre</Label>
                   <Input type="text" name="name" id="name" placeholder="Buscar por Nombre"
+                         value={this.state.name}
                          onChange={(e: any) => this.handleChange(e)}/>
                 </FormGroup>
               </Col>
@@ -61,9 +64,11 @@ export class Search extends React.Component<any, any> {
                         onClick={() => this.handleSearchCompoundBy(
                           'nce=' + this.state.nce +
                           '&cas=' + this.state.cas +
-                          '&name=' + this.state.name)}>Buscar</Button>
-                <Button color={"primary"} size={"sm"}
-                        onClick={() => this.cleanSearchFields()}> Limpiar</Button>
+                          '&name=' + this.state.name)}>Buscar Compuesto</Button>
+              </Col>
+              <Col md={2}>
+                <Button color={"danger"} size={"sm"}
+                        onClick={() => this.cleanSearchFields()}> Limpiar Formulario</Button>
               </Col>
             </Row>
           </Form>
@@ -75,10 +80,8 @@ export class Search extends React.Component<any, any> {
 
   private handleChange(event: any) {
     const target = event.target;
-    const value = (target.type === 'checkbox' || target.type === 'radio') ? target.checked : target.value;
+    const value = target.value;
     const name = target.name;
-
-    //this.cleanSearchFields();
 
     this.setState({
       [name]: value

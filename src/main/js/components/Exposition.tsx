@@ -2,7 +2,7 @@ import * as React from "react";
 import {Col, Row, Table} from "reactstrap";
 
 
-export class Calculations extends React.Component<any, any> {
+export class Exposition extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);

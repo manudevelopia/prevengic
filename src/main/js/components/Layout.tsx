@@ -4,10 +4,11 @@ import {Search} from "./search/Search";
 import {SearchResults} from "./search/SearchResults";
 import {CompoundsForm} from "./CompoundsForm";
 import {Header} from "./Header";
-import {Calculations} from "./Calculations";
+import {Exposition} from "./Exposition";
 import {NotesAndAdvices} from "./NotesAndAdvices";
 import {Notes} from "./Notes";
 import {WarningAdvices} from "./WarningAdvices";
+import {ShortExposition} from "./ShortExposition";
 
 export interface LayoutProps {
   compiler: string;
@@ -50,7 +51,8 @@ export class Layout extends React.Component<LayoutProps, any> {
                        onUpdate={(e: any) => {
                          this.handleUpdate(e)
                        }}/>
-        <Calculations  calculations={this.state.calculations} />
+        <Exposition calculations={this.state.calculations}/>
+        <ShortExposition calculations={this.state.calculations}/>
         <NotesAndAdvices results={this.state.calculations}/>
         <WarningAdvices warningAdvices={this.state.warningAdvices}/>
         <Notes notes={this.state.notes}/>

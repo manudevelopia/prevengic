@@ -3,6 +3,7 @@ package info.developia.prevengic.dao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
@@ -26,6 +27,7 @@ public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @EqualsAndHashCode.Exclude
     private Long id;
 
     @OneToMany(mappedBy = "report")

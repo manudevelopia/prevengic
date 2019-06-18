@@ -2,6 +2,7 @@ package info.developia.prevengic.dao;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ public class CompoundReportResult {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @EqualsAndHashCode.Exclude
     private Long id;
 
     @OneToOne

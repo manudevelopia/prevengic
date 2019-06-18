@@ -71,7 +71,7 @@ export class CompoundsForm extends React.Component<any, any> {
       method: 'POST',
       credentials: 'same-origin',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(this.state)
+      body: JSON.stringify(this.props.selection)
     })
         .then((response) => {
           return response.json();

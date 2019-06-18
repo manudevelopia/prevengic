@@ -1,8 +1,15 @@
 package info.developia.prevengic.dao;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.util.Set;
 
 @Data
@@ -11,6 +18,8 @@ import java.util.Set;
 public class Workarea {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @EqualsAndHashCode.Exclude
     private Long id;
 
     private String name;

@@ -55,8 +55,8 @@ public class ReportServiceImpl implements ReportService {
                 .collect(Collectors.toList());
     }
 
-    private CompoundReportResult processCompound(SelectedCompoundItem selectedCompoundItem) {
-        Compound compound = compoundRepository.findByName(selectedCompoundItem.getName())
+    private CompoundReportResult processCompound(SelectedCompoundItem item) {
+        Compound compound = compoundRepository.findByName(item.getName())
                 .orElseThrow(CompoundDoesNotExistException::new);
 
         // TODO: replace hour values with constants

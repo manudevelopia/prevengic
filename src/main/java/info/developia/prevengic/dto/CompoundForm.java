@@ -3,6 +3,7 @@ package info.developia.prevengic.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.logging.log4j.util.Strings;
 
 import java.util.List;
 
@@ -10,6 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompoundForm {
+
+    public static final String REGEX_VLA_UNITS = "(mg/m3)|(ppm)|(---)";
 
     private String link;
     private String name;
@@ -34,8 +37,7 @@ public class CompoundForm {
     }
 
     private Double parse(String value) {
-        // TODO: remove all non numeric chars
-        value = value.replaceAll("", "");
+        value = value.replaceAll(REGEX_VLA_UNITS, Strings.EMPTY).trim();
 
         try {
             return Double.parseDouble(value);

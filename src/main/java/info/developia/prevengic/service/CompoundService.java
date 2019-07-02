@@ -10,4 +10,6 @@ public interface CompoundService {
 
     List<Compound> findBy(String nce, String cas, String name);
 
+    Compound create(Compound compound);
+
 }

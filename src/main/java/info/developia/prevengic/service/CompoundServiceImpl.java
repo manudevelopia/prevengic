@@ -49,4 +49,13 @@ public class CompoundServiceImpl implements CompoundService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public Compound create(Compound compound) {
+        info.developia.prevengic.dao.Compound compoundEntity = CompoundMapper.MAPPER.domainToEntity(compound);
+
+        info.developia.prevengic.dao.Compound result = compoundRepository.save(compoundEntity);
+
+        return CompoundMapper.MAPPER.entityToDomain(result);
+    }
+
 }

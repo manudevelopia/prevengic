@@ -14,4 +14,6 @@ public interface CompoundMapper {
     info.developia.prevengic.model.Compound entityToDomain(Compound entity);
     List<info.developia.prevengic.model.Compound> entityToDomain(List<Compound> entity);
 
+    Compound domainToEntity(info.developia.prevengic.model.Compound entity);
+
 }

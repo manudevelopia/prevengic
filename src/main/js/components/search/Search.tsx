@@ -45,7 +45,7 @@ export class Search extends React.Component<any, any> {
                 <FormGroup>
                   <Label for="name">CAS</Label>
                   <Input type="text" name="cas" id="cas" placeholder="Buscar por CAS"
-                         value={this.state.cas}
+                         value={this.state.ncas}
                          onChange={(e: any) => this.handleChange(e)}/>
                 </FormGroup>
               </Col>
@@ -63,7 +63,7 @@ export class Search extends React.Component<any, any> {
                 <Button color="primary" size="sm"
                         onClick={() => this.handleSearchCompoundBy(
                           'nce=' + this.state.nce +
-                          '&cas=' + this.state.cas +
+                          '&ncas=' + this.state.ncas +
                           '&name=' + this.state.name)}>Buscar Compuesto</Button>
               </Col>
               <Col md={2}>

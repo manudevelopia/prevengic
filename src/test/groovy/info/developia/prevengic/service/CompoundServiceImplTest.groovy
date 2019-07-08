@@ -17,7 +17,7 @@ class CompoundServiceImplTest extends Specification {
         compoundService = new CompoundServiceImpl(compoundRepository)
 
         compound = new Compound(cas: "CAS", nce: "NCE", name: "Test compound1")
-        compoundDao = new info.developia.prevengic.dao.Compound(cas: "CAS", nce: "NCE", name: "Test compound1")
+        compoundDao = new info.developia.prevengic.dao.Compound(setNcas: "CAS", nce: "NCE", name: "Test compound1")
     }
 
     def "test find All"() {
@@ -58,7 +58,7 @@ class CompoundServiceImplTest extends Specification {
         compoundRepository.findAll(_) >> [compoundDao]
 
         when:
-        List<Compound> result = compoundService.findBy("cas", null, null)
+        List<Compound> result = compoundService.findBy("ncas", null, null)
 
         then:
         result == [compound]

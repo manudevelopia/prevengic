@@ -31,14 +31,14 @@ public class CompoundServiceImpl implements CompoundService {
     @Override
     public List<Compound> findBy(String nce, String cas, String name) {
         info.developia.prevengic.dao.Compound compoundExample = info.developia.prevengic.dao.Compound.builder()
-                .cas(cas)
+                .ncas(cas)
                 .nce(nce)
                 .name(name)
                 .build();
 
         ExampleMatcher matcher = ExampleMatcher.matchingAll()
                 .withMatcher("nce", contains())
-                .withMatcher("cas", contains())
+                .withMatcher("ncas", contains())
                 .withMatcher("name", contains())
                 .withIgnoreCase();
 

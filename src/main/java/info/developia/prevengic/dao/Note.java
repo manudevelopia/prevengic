@@ -3,6 +3,7 @@ package info.developia.prevengic.dao;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,7 @@ public class Note {
 
     private String code;
 
+    @Column(length = 625)
     private String description;
 
     @ManyToMany

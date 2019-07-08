@@ -17,7 +17,7 @@ export class SearchResults extends React.Component<any, any> {
         return <tr key={index}>
           <th scope="row">{index + 1}</th>
           <td>{compound.nce}</td>
-          <td>{compound.cas}</td>
+          <td>{compound.ncas}</td>
           <td>{compound.name}</td>
           <td><Button color="primary" size="sm" onClick={() => {this.addToSelected(index)}}>Añadir</Button></td>
         </tr>;

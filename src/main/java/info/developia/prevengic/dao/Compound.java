@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,14 +29,14 @@ public class Compound {
 
     private String nce;
 
-    private String cas;
+    private String ncas;
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private ChemicalProfile chemicalProfile;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Workarea workarea;
 
 }

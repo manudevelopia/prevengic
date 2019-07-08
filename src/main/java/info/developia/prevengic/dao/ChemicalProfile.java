@@ -3,6 +3,7 @@ package info.developia.prevengic.dao;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,10 +32,10 @@ public class ChemicalProfile {
     @OneToMany(mappedBy = "chemicalProfile")
     private Set<Compound> compounds;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<WarningAdvice> warningAdvices;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Note> notes;
 
 }

@@ -51,6 +51,8 @@ public class ScrapperController {
 
         Compound newCompound = Compound.builder()
                 .name(compoundForm.getName())
+                .nce(compoundForm.getNce())
+                .ncas(compoundForm.getNcas())
                 .chemicalProfile(chemicalProfile)
                 .build();
 

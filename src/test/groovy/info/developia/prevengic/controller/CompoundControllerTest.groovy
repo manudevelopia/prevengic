@@ -12,7 +12,7 @@ class CompoundControllerTest extends Specification {
     Compound compound
 
     def name = "Test compound"
-    def cas = "cas"
+    def cas = "ncas"
     def nce = "nce"
 
     def setup() {
@@ -32,7 +32,7 @@ class CompoundControllerTest extends Specification {
         then:
         verifyAll(results.getBody().get(0)) {
             name == this.name
-            cas == this.cas
+            cas == this.ncas
             nce == this.nce
         }
     }
@@ -47,7 +47,7 @@ class CompoundControllerTest extends Specification {
         then:
         verifyAll(results.getBody().get(0)) {
             name == this.name
-            cas == this.cas
+            cas == this.ncas
             nce == this.nce
         }
     }
@@ -62,7 +62,7 @@ class CompoundControllerTest extends Specification {
         then:
         verifyAll(results.getBody().get(0)) {
             name == this.name
-            cas == this.cas
+            cas == this.ncas
             nce == this.nce
         }
     }
@@ -77,7 +77,7 @@ class CompoundControllerTest extends Specification {
         then:
         verifyAll(results.getBody().get(0)) {
             name == this.name
-            cas == this.cas
+            cas == this.ncas
             nce == this.nce
         }
     }

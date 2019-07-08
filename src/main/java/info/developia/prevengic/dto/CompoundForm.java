@@ -16,6 +16,8 @@ public class CompoundForm {
 
     private String link;
     private String name;
+    private String ncas;
+    private String nce;
     private String[] vlas;
     private Double vlaEdPpm;
     private Double vlaEdMgm;

@@ -16,7 +16,7 @@ export class CompoundsForm extends React.Component<any, any> {
     let compounds = this.props.selection.map((compound: any, index: number) => {
         return <tr key={index}>
           <th scope="row">{index + 1}</th>
-          <td>{compound.cas}</td>
+          <td>{compound.ncas}</td>
           <td>{compound.name}</td>
           <td>
             <Input type="text" name="concentration" id="concentration" placeholder="Concentración"
@@ -71,7 +71,7 @@ export class CompoundsForm extends React.Component<any, any> {
       method: 'POST',
       credentials: 'same-origin',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(this.props.selection)
+      body: JSON.stringify({"compounds": this.state.compounds})
     })
         .then((response) => {
           return response.json();

@@ -14,6 +14,7 @@ public class Compound {
     private String nce;
     private String ncas;
     private String name;
+    private String url;
 
     private ChemicalProfile chemicalProfile;
 

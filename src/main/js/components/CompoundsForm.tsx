@@ -17,7 +17,7 @@ export class CompoundsForm extends React.Component<any, any> {
         return <tr key={index}>
           <th scope="row">{index + 1}</th>
           <td>{compound.ncas}</td>
-          <td>{compound.name}</td>
+          <td><a href={compound.url} target={"_blank"}>{compound.name}</a></td>
           <td>
             <Input type="text" name="concentration" id="concentration" placeholder="Concentración"
                    data-compound={compound.name}

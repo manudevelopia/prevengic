@@ -33,6 +33,8 @@ public class Compound {
 
     private String name;
 
+    private String url;
+
     @ManyToOne(cascade = CascadeType.ALL)
     private ChemicalProfile chemicalProfile;
 

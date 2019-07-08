@@ -53,6 +53,7 @@ public class ScrapperController {
                 .name(compoundForm.getName())
                 .nce(compoundForm.getNce())
                 .ncas(compoundForm.getNcas())
+                .url(compoundForm.getUrl())
                 .chemicalProfile(chemicalProfile)
                 .build();
 

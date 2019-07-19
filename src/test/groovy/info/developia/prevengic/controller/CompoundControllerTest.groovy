@@ -12,14 +12,14 @@ class CompoundControllerTest extends Specification {
     Compound compound
 
     def name = "Test compound"
-    def cas = "ncas"
+    def ncas = "ncas"
     def nce = "nce"
 
     def setup() {
         compoundService = Mock()
         compoundController = new CompoundController(compoundService)
 
-        compound = new Compound(cas: cas, nce: nce, name: name)
+        compound = new Compound(ncas: ncas, nce: nce, name: name)
     }
 
     def "test get All"() {
@@ -32,7 +32,7 @@ class CompoundControllerTest extends Specification {
         then:
         verifyAll(results.getBody().get(0)) {
             name == this.name
-            cas == this.ncas
+            ncas == this.ncas
             nce == this.nce
         }
     }
@@ -47,7 +47,7 @@ class CompoundControllerTest extends Specification {
         then:
         verifyAll(results.getBody().get(0)) {
             name == this.name
-            cas == this.ncas
+            ncas == this.ncas
             nce == this.nce
         }
     }
@@ -62,22 +62,22 @@ class CompoundControllerTest extends Specification {
         then:
         verifyAll(results.getBody().get(0)) {
             name == this.name
-            cas == this.ncas
+            ncas == this.ncas
             nce == this.nce
         }
     }
 
-    def "test find By Cas"() {
+    def "test find By NCas"() {
         given:
-        compoundService.findBy(null, cas, null) >> [compound]
+        compoundService.findBy(null, ncas, null) >> [compound]
 
         when:
-        ResponseEntity<List<Compound>> results = compoundController.findBy(null, cas, null)
+        ResponseEntity<List<Compound>> results = compoundController.findBy(null, ncas, null)
 
         then:
         verifyAll(results.getBody().get(0)) {
             name == this.name
-            cas == this.ncas
+            this.ncas == this.ncas
             nce == this.nce
         }
     }

@@ -16,8 +16,8 @@ class CompoundServiceImplTest extends Specification {
         compoundRepository = Mock()
         compoundService = new CompoundServiceImpl(compoundRepository)
 
-        compound = new Compound(cas: "CAS", nce: "NCE", name: "Test compound1")
-        compoundDao = new info.developia.prevengic.dao.Compound(setNcas: "CAS", nce: "NCE", name: "Test compound1")
+        compound = new Compound(ncas: "ncas", nce: "nce", name: "Test compound1")
+        compoundDao = new info.developia.prevengic.dao.Compound(ncas: "ncas", nce: "nce", name: "Test compound1")
     }
 
     def "test find All"() {
@@ -53,7 +53,7 @@ class CompoundServiceImplTest extends Specification {
         result == [compound]
     }
 
-    def "test find By Cas"() {
+    def "test find By NCas"() {
         given:
         compoundRepository.findAll(_) >> [compoundDao]
 

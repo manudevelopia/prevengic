@@ -6,7 +6,6 @@ import info.developia.prevengic.repository.CompoundRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,7 +44,7 @@ public class CompoundServiceImpl implements CompoundService {
 
         Example<info.developia.prevengic.dao.Compound> example = Example.of(compoundExample, matcher);
 
-        return compoundRepository.findAll(example, Sort.by("name")).stream()
+        return compoundRepository.findAll(example).stream()
                 .map(CompoundMapper.MAPPER::entityToDomain)
                 .collect(Collectors.toList());
     }

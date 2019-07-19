@@ -14,7 +14,7 @@ class CompoundRepositoryTest extends Specification {
     Compound compound
 
     def setup() {
-        compound = new Compound(setNcas: "CAS", nce: "NCE", name: "Test compound1")
+        compound = new Compound(ncas: "CAS", nce: "NCE", name: "Test compound1")
 
         compoundRepository.save(compound)
     }

@@ -4,7 +4,6 @@ import info.developia.prevengic.dao.Compound
 import info.developia.prevengic.dao.Report
 import info.developia.prevengic.dto.SelectedCompoundForm
 import info.developia.prevengic.dto.SelectedCompoundItem
-import info.developia.prevengic.model.CompoundReportResult
 import info.developia.prevengic.repository.CompoundRepository
 import info.developia.prevengic.repository.ReportRepository
 import spock.lang.Specification
@@ -41,8 +40,7 @@ class ReportServiceImplTest extends Specification {
     def "test create"() {
         given:
         def compound = new Compound(name: "Test Compound")
-        compoundRepository.findByNameOrderByName(_) >> Optional.of(compound)
-        def reportDto = new info.developia.prevengic.model.Report(compoundReportResults: [new CompoundReportResult()])
+        compoundRepository.findByName(_) >> Optional.of(compound)
 
         when:
         info.developia.prevengic.model.Report result = reportService.create(new SelectedCompoundForm([new SelectedCompoundItem()]))

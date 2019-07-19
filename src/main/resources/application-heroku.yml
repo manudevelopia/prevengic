@@ -8,7 +8,7 @@ spring:
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
-    hibernate.ddl-auto: create
+    hibernate.ddl-auto: update
     show-sql: false
     properties:
       hibernate:

@@ -41,7 +41,7 @@ class ReportServiceImplTest extends Specification {
     def "test create"() {
         given:
         def compound = new Compound(name: "Test Compound")
-        compoundRepository.findByName(_) >> Optional.of(compound)
+        compoundRepository.findByNameOrderByName(_) >> Optional.of(compound)
         def reportDto = new info.developia.prevengic.model.Report(compoundReportResults: [new CompoundReportResult()])
 
         when:

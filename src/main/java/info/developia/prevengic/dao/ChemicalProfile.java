@@ -1,7 +1,10 @@
 package info.developia.prevengic.dao;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,9 +14,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "CHEMICAL_PROFILES")
 public class ChemicalProfile {
@@ -37,5 +44,21 @@ public class ChemicalProfile {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Note> notes;
+
+    public void addNote(Note note) {
+        if (notes == null) {
+            notes = new HashSet<>();
+        }
+
+        notes.add(note);
+    }
+
+    public void addWarningAdvice(WarningAdvice warningAdvice) {
+        if (warningAdvices == null) {
+            warningAdvices = new HashSet<>();
+        }
+
+        warningAdvices.add(warningAdvice);
+    }
 
 }

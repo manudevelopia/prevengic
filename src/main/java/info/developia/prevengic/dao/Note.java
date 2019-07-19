@@ -1,7 +1,10 @@
 package info.developia.prevengic.dao;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +16,9 @@ import javax.persistence.Table;
 import java.util.Set;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "NOTES")
 public class Note {
@@ -24,7 +30,7 @@ public class Note {
 
     private String code;
 
-    @Column(length = 625)
+    @Column(length = 1512)
     private String description;
 
     @ManyToMany

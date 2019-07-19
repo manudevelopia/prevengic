@@ -1,64 +1,44 @@
 package info.developia.prevengic.controller;
 
 import info.developia.prevengic.dto.CompoundForm;
-import info.developia.prevengic.model.ChemicalProfile;
-import info.developia.prevengic.model.Compound;
-import info.developia.prevengic.model.Note;
-import info.developia.prevengic.model.WarningAdvice;
-import info.developia.prevengic.service.CompoundService;
+import info.developia.prevengic.service.ScrapperService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/scrapper")
 public class ScrapperController {
 
-    private final CompoundService compoundService;
+    private final ScrapperService scrapperService;
 
-    public ScrapperController(CompoundService compoundService) {
-        this.compoundService = compoundService;
+    public ScrapperController(ScrapperService scrapperService) {
+        this.scrapperService = scrapperService;
     }
 
     @PostMapping("/compound")
-    public ResponseEntity<Compound> createCompound(@RequestBody CompoundForm compoundForm) {
+    public ResponseEntity createCompound(@RequestBody CompoundForm compoundForm) {
 
-        Set<Note> notes = Optional.ofNullable(compoundForm.getNotes()).orElse(Collections.emptyList())
-                .stream()
-                .map(advise -> new Note(advise.getCode(), advise.getTitle()))
-                .collect(Collectors.toSet());
+        scrapperService.parse(compoundForm);
 
-        Set<WarningAdvice> warningAdvices = Optional.ofNullable(compoundForm.getWarns()).orElse(Collections.emptyList())
-                .stream()
-                .map(advise -> new WarningAdvice(advise.getCode(), advise.getTitle()))
-                .collect(Collectors.toSet());
+        return ResponseEntity.ok().build();
+    }
 
-        ChemicalProfile chemicalProfile = ChemicalProfile.builder()
-                .notes(notes)
-                .warningAdvices(warningAdvices)
-                .vlaEdPpm(compoundForm.getVlaEdPpm())
-                .vlaEdMgm(compoundForm.getVlaEdMgm())
-                .vlaEcPpm(compoundForm.getVlaEcPpm())
-                .vlaEcMgm(compoundForm.getVlaEcMgm())
-                .build();
+    @PostMapping("/compounds")
+    public ResponseEntity createCompounds(@RequestBody List<CompoundForm> compoundFormList) {
 
-        Compound newCompound = Compound.builder()
-                .name(compoundForm.getName())
-                .nce(compoundForm.getNce())
-                .ncas(compoundForm.getNcas())
-                .url(compoundForm.getUrl())
-                .chemicalProfile(chemicalProfile)
-                .build();
+        compoundFormList.stream()
+                .filter(c -> c.getParent().isEmpty())
+                .forEach(scrapperService::parse);
 
-        Compound compound = compoundService.create(newCompound);
+        compoundFormList.stream()
+                .filter(c -> !c.getParent().isEmpty())
+                .forEach(scrapperService::parse);
 
-        return ResponseEntity.ok(compound);
+        return ResponseEntity.ok().build();
     }
 }

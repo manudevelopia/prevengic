@@ -16,6 +16,7 @@ public class CompoundForm {
 
     private String link;
     private String name;
+    private String parent;
     private String ncas;
     private String nce;
     private String url;
@@ -32,14 +33,22 @@ public class CompoundForm {
         this.vlas = vlas;
 
         if (vlas.length == 4) {
-            this.vlaEdPpm = parse(vlas[0]);
-            this.vlaEdMgm = parse(vlas[1]);
-            this.vlaEcPpm = parse(vlas[2]);
-            this.vlaEcMgm = parse(vlas[3]);
+            this.vlaEdPpm = parseVlaValues(vlas[0]);
+            this.vlaEdMgm = parseVlaValues(vlas[1]);
+            this.vlaEcPpm = parseVlaValues(vlas[2]);
+            this.vlaEcMgm = parseVlaValues(vlas[3]);
         }
     }
 
-    private Double parse(String value) {
+    public void setParent(String parent) {
+        this.parent = saneText(parent);
+    }
+
+    private String saneText(String text) {
+        return text.replaceAll("[\\n\\t]", "").trim();
+    }
+
+    private Double parseVlaValues(String value) {
         value = value.replaceAll(REGEX_VLA_UNITS, Strings.EMPTY).trim();
 
         try {

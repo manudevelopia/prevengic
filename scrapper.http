@@ -508,7 +508,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8080/api/scrapper/compounds
+POST https://prevengic.herokuapp.com/api/scrapper/compounds
 Content-Type: application/json
 
 [

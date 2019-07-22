@@ -28,10 +28,10 @@ public class CompoundReportResult {
     private Compound compound;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private ExpositionResult shortExposition;
+    private ExpositionResultDao shortExposition;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private ExpositionResult exposition;
+    private ExpositionResultDao exposition;
 
     @ManyToOne
     private ReportDao report;

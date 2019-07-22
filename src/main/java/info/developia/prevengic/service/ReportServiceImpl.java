@@ -2,7 +2,7 @@ package info.developia.prevengic.service;
 
 import info.developia.prevengic.dao.Compound;
 import info.developia.prevengic.dao.CompoundReportResult;
-import info.developia.prevengic.dao.ExpositionResult;
+import info.developia.prevengic.dao.ExpositionResultDao;
 import info.developia.prevengic.dao.ReportDao;
 import info.developia.prevengic.dto.SelectedCompoundForm;
 import info.developia.prevengic.dto.SelectedCompoundItem;
@@ -60,8 +60,8 @@ public class ReportServiceImpl implements ReportService {
                 .orElseThrow(CompoundDoesNotExistException::new);
 
         // TODO: replace hour values with constants
-        ExpositionResult exposition = calculateExposition(compound, 8);
-        ExpositionResult shortExposition = calculateExposition(compound, 1);
+        ExpositionResultDao exposition = calculateExposition(compound, 8);
+        ExpositionResultDao shortExposition = calculateExposition(compound, 1);
 
         return CompoundReportResult.builder()
                 .compound(compound)
@@ -70,8 +70,8 @@ public class ReportServiceImpl implements ReportService {
                 .build();
     }
 
-    private ExpositionResult calculateExposition(Compound compound, int hours) {
-        return ExpositionResult.builder()
+    private ExpositionResultDao calculateExposition(Compound compound, int hours) {
+        return ExpositionResultDao.builder()
                 // TODO: replace Math.random() with real calculations
                 .ed(Math.random())
                 .vlaEd(Math.random())

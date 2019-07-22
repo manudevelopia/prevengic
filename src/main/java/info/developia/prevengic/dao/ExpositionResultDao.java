@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "REPORT_RESULTS")
 @Data
 @Builder
-public class ExpositionResult {
+public class ExpositionResultDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -31,7 +31,7 @@ public class ReportDao {
     private Long id;
 
     @OneToMany(mappedBy = "report")
-    private Set<Workarea> workareas;
+    private Set<WorkareaDao> workareas;
 
     @ManyToOne
     private UserDao user;

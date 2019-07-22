@@ -39,6 +39,6 @@ public class Compound {
     private ChemicalProfile chemicalProfile;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Workarea workarea;
+    private WorkareaDao workarea;
 
 }

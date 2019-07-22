@@ -15,7 +15,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "WORKAREAS")
-public class Workarea {
+public class WorkareaDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Button, Col, Form, FormGroup, Input, Label, Row} from "reactstrap";
+import {Button, Col, Form, FormGroup, Input, Label, Row, Spinner} from "reactstrap";
 
 export class Search extends React.Component<any, any> {
 
@@ -8,17 +8,21 @@ export class Search extends React.Component<any, any> {
 
     this.state = {
       nce: '',
-      cas: '',
-      name: ''
+      ncas: '',
+      name: '',
+      searching: false
     }
   }
 
   public handleSearchCompoundBy(criteria: string): void {
+    this.setState({searching: true});
+
     fetch('/api/compounds/find?' + criteria, {credentials: 'same-origin',})
       .then((response) => {
         return response.json();
       })
       .then((results) => {
+        this.setState({searching: false});
         this.props.onChange(results);
       })
       .catch((e) => {
@@ -27,6 +31,9 @@ export class Search extends React.Component<any, any> {
   }
 
   render() {
+
+    const spinner = this.state.searching ? <Spinner size="sm" color="light"/> : '';
+
     return (
       <Row>
         <Col md={12}>
@@ -64,7 +71,8 @@ export class Search extends React.Component<any, any> {
                         onClick={() => this.handleSearchCompoundBy(
                           'nce=' + this.state.nce +
                           '&ncas=' + this.state.ncas +
-                          '&name=' + this.state.name)}>Buscar Compuesto</Button>
+                          '&name=' + this.state.name)}>{spinner} Buscar Compuesto
+                </Button>
               </Col>
               <Col md={2}>
                 <Button color={"danger"} size={"sm"}
@@ -92,7 +100,7 @@ export class Search extends React.Component<any, any> {
   private cleanSearchFields() {
     this.setState({
       nce: '',
-      cas: '',
+      ncas: '',
       name: ''
     });
   }

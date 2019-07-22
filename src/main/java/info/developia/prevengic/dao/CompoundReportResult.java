@@ -34,6 +34,6 @@ public class CompoundReportResult {
     private ExpositionResult exposition;
 
     @ManyToOne
-    private Report report;
+    private ReportDao report;
 
 }

@@ -1,7 +1,7 @@
 package info.developia.prevengic.service
 
 import info.developia.prevengic.dao.Compound
-import info.developia.prevengic.dao.Report
+import info.developia.prevengic.dao.ReportDao
 import info.developia.prevengic.dto.SelectedCompoundForm
 import info.developia.prevengic.dto.SelectedCompoundItem
 import info.developia.prevengic.repository.CompoundRepository
@@ -25,7 +25,7 @@ class ReportServiceImplTest extends Specification {
 
     def "test find All"() {
         given:
-        def reportDao = new Report(compoundReportResults: [])
+        def reportDao = new ReportDao(compoundReportResults: [])
         def reportDto = new info.developia.prevengic.model.Report( compoundReportResults: [])
 
         reportRepository.findAll() >> [reportDao]

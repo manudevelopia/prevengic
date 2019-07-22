@@ -32,6 +32,6 @@ public class UserDao {
     private String password;
 
     @OneToMany(mappedBy = "user")
-    private Set<Report> reports;
+    private Set<ReportDao> reports;
 
 }

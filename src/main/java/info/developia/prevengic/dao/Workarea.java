@@ -25,7 +25,7 @@ public class Workarea {
     private String name;
 
     @OneToOne
-    private Report report;
+    private ReportDao report;
 
     @OneToMany(mappedBy = "workarea")
     private Set<Compound> compounds;

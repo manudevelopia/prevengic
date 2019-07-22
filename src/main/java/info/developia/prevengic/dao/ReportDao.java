@@ -23,7 +23,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Report {
+public class ReportDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

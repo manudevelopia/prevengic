@@ -3,7 +3,7 @@ package info.developia.prevengic.service;
 import info.developia.prevengic.dao.Compound;
 import info.developia.prevengic.dao.CompoundReportResult;
 import info.developia.prevengic.dao.ExpositionResult;
-import info.developia.prevengic.dao.Report;
+import info.developia.prevengic.dao.ReportDao;
 import info.developia.prevengic.dto.SelectedCompoundForm;
 import info.developia.prevengic.dto.SelectedCompoundItem;
 import info.developia.prevengic.exception.CompoundDoesNotExistException;
@@ -40,7 +40,7 @@ public class ReportServiceImpl implements ReportService {
     public info.developia.prevengic.model.Report create(SelectedCompoundForm selectedCompoundForm) {
         List<CompoundReportResult> result = processSelectedCompounds(selectedCompoundForm);
 
-        Report report = Report.builder()
+        ReportDao report = ReportDao.builder()
                 .compoundReportResults(result)
                 .build();
 

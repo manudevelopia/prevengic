@@ -1,6 +1,6 @@
 package info.developia.prevengic.service;
 
-import info.developia.prevengic.dto.CompoundForm;
+import info.developia.prevengic.dto.ScrappedCompoundDto;
 import info.developia.prevengic.exception.ScrapperException;
 import info.developia.prevengic.mapper.CompoundMapper;
 import info.developia.prevengic.model.ChemicalProfile;
@@ -34,13 +34,13 @@ public class ScrapperServiceImpl implements ScrapperService {
     }
 
     @Override
-    public Compound parse(CompoundForm compoundForm) {
-        Set<Note> notes = Optional.ofNullable(compoundForm.getNotes()).orElse(Collections.emptyList())
+    public Compound parse(ScrappedCompoundDto scrappedCompoundDto) {
+        Set<Note> notes = Optional.ofNullable(scrappedCompoundDto.getNotes()).orElse(Collections.emptyList())
                 .stream()
                 .map(advise -> new Note(advise.getCode(), advise.getTitle()))
                 .collect(Collectors.toSet());
 
-        Set<WarningAdvice> warningAdvices = Optional.ofNullable(compoundForm.getWarns()).orElse(Collections.emptyList())
+        Set<WarningAdvice> warningAdvices = Optional.ofNullable(scrappedCompoundDto.getWarns()).orElse(Collections.emptyList())
                 .stream()
                 .map(advise -> new WarningAdvice(advise.getCode(), advise.getTitle()))
                 .collect(Collectors.toSet());
@@ -48,18 +48,18 @@ public class ScrapperServiceImpl implements ScrapperService {
         ChemicalProfile chemicalProfile = ChemicalProfile.builder()
                 .notes(notes)
                 .warningAdvices(warningAdvices)
-                .vlaEdPpm(compoundForm.getVlaEdPpm())
-                .vlaEdMgm(compoundForm.getVlaEdMgm())
-                .vlaEcPpm(compoundForm.getVlaEcPpm())
-                .vlaEcMgm(compoundForm.getVlaEcMgm())
+                .vlaEdPpm(scrappedCompoundDto.getVlaEdPpm())
+                .vlaEdMgm(scrappedCompoundDto.getVlaEdMgm())
+                .vlaEcPpm(scrappedCompoundDto.getVlaEcPpm())
+                .vlaEcMgm(scrappedCompoundDto.getVlaEcMgm())
                 .build();
 
         Compound newCompound = Compound.builder()
-                .name(compoundForm.getName())
-                .parent(compoundForm.getParent())
-                .nce(compoundForm.getNce())
-                .ncas(compoundForm.getNcas())
-                .url(compoundForm.getUrl())
+                .name(scrappedCompoundDto.getName())
+                .parent(scrappedCompoundDto.getParent())
+                .nce(scrappedCompoundDto.getNce())
+                .ncas(scrappedCompoundDto.getNcas())
+                .url(scrappedCompoundDto.getUrl())
                 .chemicalProfile(chemicalProfile)
                 .build();
 

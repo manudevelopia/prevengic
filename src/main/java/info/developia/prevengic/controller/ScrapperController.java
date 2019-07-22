@@ -1,6 +1,6 @@
 package info.developia.prevengic.controller;
 
-import info.developia.prevengic.dto.CompoundForm;
+import info.developia.prevengic.dto.ScrappedCompoundDto;
 import info.developia.prevengic.service.ScrapperService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,21 +21,21 @@ public class ScrapperController {
     }
 
     @PostMapping("/compound")
-    public ResponseEntity createCompound(@RequestBody CompoundForm compoundForm) {
+    public ResponseEntity createCompound(@RequestBody ScrappedCompoundDto scrappedCompoundDto) {
 
-        scrapperService.parse(compoundForm);
+        scrapperService.parse(scrappedCompoundDto);
 
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/compounds")
-    public ResponseEntity createCompounds(@RequestBody List<CompoundForm> compoundFormList) {
+    public ResponseEntity createCompounds(@RequestBody List<ScrappedCompoundDto> scrappedCompoundDtoList) {
 
-        compoundFormList.stream()
+        scrappedCompoundDtoList.stream()
                 .filter(c -> c.getParent().isEmpty())
                 .forEach(scrapperService::parse);
 
-        compoundFormList.stream()
+        scrappedCompoundDtoList.stream()
                 .filter(c -> !c.getParent().isEmpty())
                 .forEach(scrapperService::parse);
 

@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CompoundForm {
+public class ScrappedCompoundDto {
 
     public static final String REGEX_VLA_UNITS = "(mg/m3)|(ppm)|(---)";
 

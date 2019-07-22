@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Button, Col, Form, Input, Row, Table} from "reactstrap";
+import {Button, Col, Form, Input, Row, Spinner, Table} from "reactstrap";
 
 
 export class CompoundsForm extends React.Component<any, any> {
@@ -8,11 +8,14 @@ export class CompoundsForm extends React.Component<any, any> {
     super(props);
 
     this.state = {
-        compounds: []
+      compounds: [],
+      generatingReport: false
     };
   }
 
   public render() {
+    const spinner = this.state.generatingReport ? <Spinner size="sm" color="light"/> : '';
+
     let compounds = this.props.selection.map((compound: any, index: number) => {
         return <tr key={index}>
           <th scope="row">{index + 1}</th>
@@ -53,7 +56,10 @@ export class CompoundsForm extends React.Component<any, any> {
               </thead>
               <tbody>{compounds}</tbody>
             </Table>
-            <Button color="success" onClick={(e: any) => {this.handleSubmit(e)}}>Generar informe</Button>
+            <Button color="success" disabled={this.state.generatingReport}
+                    onClick={(e: any) => {
+                      this.handleSubmit(e)
+                    }}>{spinner} Generar informe</Button>
           </Form>
         </Col>
       </Row>
@@ -66,6 +72,7 @@ export class CompoundsForm extends React.Component<any, any> {
 
   private handleSubmit(e: any) {
     e.preventDefault();
+    this.setState({generatingReport: true});
 
     fetch('/api/reports/create', {
       method: 'POST',
@@ -77,6 +84,7 @@ export class CompoundsForm extends React.Component<any, any> {
           return response.json();
         })
       .then((report) => {
+        this.setState({generatingReport: false});
         this.props.onUpdate(report);
         })
         .catch((e) => {

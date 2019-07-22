@@ -68,6 +68,7 @@ export class Search extends React.Component<any, any> {
             <Row>
               <Col md={2}>
                 <Button color="primary" size="sm"
+                        disabled={this.state.searching}
                         onClick={() => this.handleSearchCompoundBy(
                           'nce=' + this.state.nce +
                           '&ncas=' + this.state.ncas +
@@ -76,6 +77,7 @@ export class Search extends React.Component<any, any> {
               </Col>
               <Col md={2}>
                 <Button color={"danger"} size={"sm"}
+                        disabled={this.state.searching}
                         onClick={() => this.cleanSearchFields()}> Limpiar Formulario</Button>
               </Col>
             </Row>

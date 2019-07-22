@@ -1,5 +1,7 @@
 package info.developia.prevengic.service;
 
+import info.developia.prevengic.dao.NoteDao;
+import info.developia.prevengic.dao.WarningAdviceDao;
 import info.developia.prevengic.dto.ScrappedCompoundDto;
 import info.developia.prevengic.exception.ScrapperException;
 import info.developia.prevengic.mapper.CompoundMapper;
@@ -83,11 +85,11 @@ public class ScrapperServiceImpl implements ScrapperService {
         if (compundParent != null && !compundParent.isEmpty()) {
             parseParent(newCompound, compoundEntity);
         } else {
-            Set<info.developia.prevengic.dao.Note> notes = newCompound.getChemicalProfile().getNotes()
+            Set<NoteDao> notes = newCompound.getChemicalProfile().getNotes()
                     .stream().map(this::parseNotes).collect(Collectors.toSet());
             compoundEntity.getChemicalProfile().setNotes(notes);
 
-            Set<info.developia.prevengic.dao.WarningAdvice> warningAdvices = newCompound.getChemicalProfile().getWarningAdvices()
+            Set<WarningAdviceDao> warningAdvices = newCompound.getChemicalProfile().getWarningAdvices()
                     .stream().map(this::parseWarningAdvices).collect(Collectors.toSet());
             compoundEntity.getChemicalProfile().setWarningAdvices(warningAdvices);
         }
@@ -97,18 +99,18 @@ public class ScrapperServiceImpl implements ScrapperService {
         return CompoundMapper.MAPPER.entityToDomain(result);
     }
 
-    private info.developia.prevengic.dao.Note parseNotes(Note note) {
+    private NoteDao parseNotes(Note note) {
         return noteRepository.findByCode(note.getCode())
-                .orElse(info.developia.prevengic.dao.Note.builder()
+                .orElse(NoteDao.builder()
                         .code(note.getCode())
                         .description(note.getDescription())
                         .build());
 
     }
 
-    private info.developia.prevengic.dao.WarningAdvice parseWarningAdvices(WarningAdvice warningAdvices) {
+    private WarningAdviceDao parseWarningAdvices(WarningAdvice warningAdvices) {
         return warningAdviceRepository.findByCode(warningAdvices.getCode())
-                .orElse(info.developia.prevengic.dao.WarningAdvice.builder()
+                .orElse(WarningAdviceDao.builder()
                         .code(warningAdvices.getCode())
                         .description(warningAdvices.getDescription())
                         .build());
@@ -119,8 +121,8 @@ public class ScrapperServiceImpl implements ScrapperService {
                 .findByName(newCompound.getParent())
                 .orElseThrow(() -> new ScrapperException("No parent '" + newCompound.getParent() + "' could be found for '" + newCompound.getName() + "'"));
 
-        Optional<Set<info.developia.prevengic.dao.Note>> parentNotes = Optional.ofNullable(parentCompound.getChemicalProfile().getNotes());
-        Optional<Set<info.developia.prevengic.dao.WarningAdvice>> parentWarningAdvices = Optional.ofNullable(parentCompound.getChemicalProfile().getWarningAdvices());
+        Optional<Set<NoteDao>> parentNotes = Optional.ofNullable(parentCompound.getChemicalProfile().getNotes());
+        Optional<Set<WarningAdviceDao>> parentWarningAdvices = Optional.ofNullable(parentCompound.getChemicalProfile().getWarningAdvices());
 
         parentNotes.ifPresent(notes -> notes.forEach(note -> compoundEntity.getChemicalProfile().addNote(note)));
         parentWarningAdvices.ifPresent(warningAdvices -> warningAdvices.forEach(warningAdvice -> compoundEntity.getChemicalProfile().addWarningAdvice(warningAdvice)));

@@ -40,12 +40,12 @@ public class ChemicalProfile {
     private Set<Compound> compounds;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
-    private Set<WarningAdvice> warningAdvices;
+    private Set<WarningAdviceDao> warningAdvices;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
-    private Set<Note> notes;
+    private Set<NoteDao> notes;
 
-    public void addNote(Note note) {
+    public void addNote(NoteDao note) {
         if (notes == null) {
             notes = new HashSet<>();
         }
@@ -53,7 +53,7 @@ public class ChemicalProfile {
         notes.add(note);
     }
 
-    public void addWarningAdvice(WarningAdvice warningAdvice) {
+    public void addWarningAdvice(WarningAdviceDao warningAdvice) {
         if (warningAdvices == null) {
             warningAdvices = new HashSet<>();
         }

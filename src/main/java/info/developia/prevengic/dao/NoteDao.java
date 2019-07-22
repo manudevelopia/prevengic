@@ -11,9 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.util.Set;
 
 @Data
 @Builder
@@ -21,7 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "NOTES")
-public class Note {
+public class NoteDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,8 +30,5 @@ public class Note {
 
     @Column(length = 1512)
     private String description;
-
-    @ManyToMany
-    private Set<ChemicalProfile> chemicalProfiles;
 
 }

@@ -34,7 +34,7 @@ public class Report {
     private Set<Workarea> workareas;
 
     @ManyToOne
-    private User user;
+    private UserDao user;
 
     @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
     private List<CompoundReportResult> compoundReportResults;

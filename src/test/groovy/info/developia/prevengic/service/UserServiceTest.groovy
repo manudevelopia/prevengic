@@ -1,6 +1,7 @@
 package info.developia.prevengic.service
 
-import info.developia.prevengic.dao.User
+
+import info.developia.prevengic.dao.UserDao
 import info.developia.prevengic.exception.UserDoesNotExistException
 import info.developia.prevengic.repository.UserRepository
 import spock.lang.Specification
@@ -9,13 +10,13 @@ class UserServiceTest extends Specification {
 
     UserService userService
     UserRepository userRepository
-    User user
+    UserDao user
 
     def setup() {
         userRepository = Mock()
         userService = new UserServiceImpl(userRepository)
 
-        user = new User(name: "John Doe", email: "johndoe@email.com")
+        user = new UserDao(name: "John Doe", email: "johndoe@email.com")
     }
 
     def "Obtain User providing email"() {

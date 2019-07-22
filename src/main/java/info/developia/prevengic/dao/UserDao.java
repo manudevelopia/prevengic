@@ -16,7 +16,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "USERS")
-public class User {
+public class UserDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

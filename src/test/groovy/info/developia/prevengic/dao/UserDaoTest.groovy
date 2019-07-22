@@ -5,12 +5,11 @@ import info.developia.prevengic.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import spock.lang.Specification
-import spock.lang.Unroll
 
 import javax.validation.ConstraintViolationException
 
 @DataJpaTest
-class UserTest extends Specification {
+class UserDaoTest extends Specification {
 
     @Autowired
     UserRepository repository
@@ -25,13 +24,13 @@ class UserTest extends Specification {
 
     def "User can be persisted and recovered"() {
         given:
-        User user = new User(email: userEmail, name: userName)
+        UserDao user = new UserDao(email: userEmail, name: userName)
 
         when:
         repository.save(user)
 
         then:
-        User result = repository.findByEmail(userEmail).get()
+        UserDao result = repository.findByEmail(userEmail).get()
 
         verifyAll(result) {
             email == userEmail
@@ -41,7 +40,7 @@ class UserTest extends Specification {
 
     def "User has to provide a valid email and name to be persisted"() {
         given:
-        User user = new User(email: e, name: n)
+        UserDao user = new UserDao(email: e, name: n)
 
         when:
         repository.save(user)

@@ -52,7 +52,7 @@ insert into CHEMICAL_PROFILES_WARNING_ADVICES(CHEMICAL_PROFILE_ID, WARNING_ADVIC
 (996, 996),
 (997, 997);
 
-insert into COMPOUNDS(id, nce, cas, name, chemical_profile_id) values
+insert into COMPOUNDS(id, nce, ncas, name, chemical_profile_id) values
 (991, '200-836-8', '75-07-0', 'Acetaldehído', 991),
 (992, 'nce2', '150-76-5', '4-Metoxifenol', 992),
 (993, 'nce3', '151-50-8', 'Cianuro de potasio', 993),

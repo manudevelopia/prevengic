@@ -32,7 +32,7 @@ export class Search extends React.Component<any, any> {
 
   render() {
 
-    const spinner = this.state.searching ? <Spinner size="sm" color="light"/> : '';
+    const spinner = this.state.searching && <Spinner size="sm" color="light"/>;
 
     return (
       <Row>

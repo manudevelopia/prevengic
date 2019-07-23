@@ -14,7 +14,7 @@ export class CompoundsForm extends React.Component<any, any> {
   }
 
   public render() {
-    const spinner = this.state.generatingReport ? <Spinner size="sm" color="light"/> : '';
+    const spinner = this.state.generatingReport && <Spinner size="sm" color="light"/>;
 
     let compounds = this.props.selection.map((compound: any, index: number) => {
         return <tr key={index}>
@@ -67,7 +67,7 @@ export class CompoundsForm extends React.Component<any, any> {
   }
 
   private removeFromSelected(index: number) {
-    let results = this.state.compounds.slice();
+    const results = this.state.compounds.slice();
 
     results.splice(this.state.compounds[index], 1);
     this.setState({compounds: results});

@@ -28,6 +28,6 @@ public class WorkareaDao {
     private ReportDao report;
 
     @OneToMany(mappedBy = "workarea")
-    private Set<Compound> compounds;
+    private Set<CompoundDao> compounds;
 
 }

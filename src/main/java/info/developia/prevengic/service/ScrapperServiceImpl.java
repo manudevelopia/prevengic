@@ -1,6 +1,7 @@
 package info.developia.prevengic.service;
 
 import info.developia.prevengic.dao.ChemicalProfileDao;
+import info.developia.prevengic.dao.CompoundDao;
 import info.developia.prevengic.dao.NoteDao;
 import info.developia.prevengic.dao.WarningAdviceDao;
 import info.developia.prevengic.dto.ScrappedCompoundDto;
@@ -70,7 +71,7 @@ public class ScrapperServiceImpl implements ScrapperService {
     }
 
     private Compound createCompound(Compound newCompound) {
-        info.developia.prevengic.dao.Compound compoundEntity = info.developia.prevengic.dao.Compound.builder()
+        CompoundDao compoundEntity = CompoundDao.builder()
                 .name(newCompound.getName())
                 .nce(newCompound.getNce())
                 .ncas(newCompound.getNcas())
@@ -95,7 +96,7 @@ public class ScrapperServiceImpl implements ScrapperService {
             compoundEntity.getChemicalProfile().setWarningAdvices(warningAdvices);
         }
 
-        info.developia.prevengic.dao.Compound result = compoundRepository.save(compoundEntity);
+        CompoundDao result = compoundRepository.save(compoundEntity);
 
         return CompoundMapper.MAPPER.entityToDomain(result);
     }
@@ -117,8 +118,8 @@ public class ScrapperServiceImpl implements ScrapperService {
                         .build());
     }
 
-    private void parseParent(Compound newCompound, info.developia.prevengic.dao.Compound compoundEntity) {
-        info.developia.prevengic.dao.Compound parentCompound = compoundRepository
+    private void parseParent(Compound newCompound, CompoundDao compoundEntity) {
+        CompoundDao parentCompound = compoundRepository
                 .findByName(newCompound.getParent())
                 .orElseThrow(() -> new ScrapperException("No parent '" + newCompound.getParent() + "' could be found for '" + newCompound.getName() + "'"));
 

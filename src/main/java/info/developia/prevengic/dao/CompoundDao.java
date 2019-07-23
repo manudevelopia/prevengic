@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name = "COMPOUNDS")
-public class Compound {
+public class CompoundDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

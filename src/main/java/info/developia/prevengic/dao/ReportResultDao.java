@@ -25,7 +25,7 @@ public class ReportResultDao {
     private Long id;
 
     @OneToOne
-    private Compound compound;
+    private CompoundDao compound;
 
     @OneToOne(cascade = CascadeType.ALL)
     private ExpositionResultDao shortExposition;

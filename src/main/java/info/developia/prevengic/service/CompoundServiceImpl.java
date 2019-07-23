@@ -1,5 +1,6 @@
 package info.developia.prevengic.service;
 
+import info.developia.prevengic.dao.CompoundDao;
 import info.developia.prevengic.mapper.CompoundMapper;
 import info.developia.prevengic.model.Compound;
 import info.developia.prevengic.repository.CompoundRepository;
@@ -30,7 +31,7 @@ public class CompoundServiceImpl implements CompoundService {
 
     @Override
     public List<Compound> findBy(String nce, String cas, String name) {
-        info.developia.prevengic.dao.Compound compoundExample = info.developia.prevengic.dao.Compound.builder()
+        CompoundDao compoundExample = CompoundDao.builder()
                 .ncas(cas)
                 .nce(nce)
                 .name(name)
@@ -42,7 +43,7 @@ public class CompoundServiceImpl implements CompoundService {
                 .withMatcher("name", contains())
                 .withIgnoreCase();
 
-        Example<info.developia.prevengic.dao.Compound> example = Example.of(compoundExample, matcher);
+        Example<CompoundDao> example = Example.of(compoundExample, matcher);
 
         return compoundRepository.findAll(example).stream()
                 .map(CompoundMapper.MAPPER::entityToDomain)
@@ -51,9 +52,9 @@ public class CompoundServiceImpl implements CompoundService {
 
     @Override
     public Compound create(Compound compound) {
-        info.developia.prevengic.dao.Compound compoundEntity = CompoundMapper.MAPPER.domainToEntity(compound);
+        CompoundDao compoundEntity = CompoundMapper.MAPPER.domainToEntity(compound);
 
-        info.developia.prevengic.dao.Compound result = compoundRepository.save(compoundEntity);
+        CompoundDao result = compoundRepository.save(compoundEntity);
 
         return CompoundMapper.MAPPER.entityToDomain(result);
     }

@@ -39,7 +39,7 @@ public class ChemicalProfileDao {
     private Double vlaEcMgm;
 
     @OneToMany(mappedBy = "chemicalProfile")
-    private Set<Compound> compounds;
+    private Set<CompoundDao> compounds;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "CHEMICAL_PROFILES_WARNING_ADVICES",

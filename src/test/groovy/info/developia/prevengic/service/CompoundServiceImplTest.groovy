@@ -1,5 +1,6 @@
 package info.developia.prevengic.service
 
+import info.developia.prevengic.dao.CompoundDao
 import info.developia.prevengic.model.Compound
 import info.developia.prevengic.repository.CompoundRepository
 import spock.lang.Specification
@@ -10,14 +11,14 @@ class CompoundServiceImplTest extends Specification {
     CompoundServiceImpl compoundService
 
     Compound compound
-    info.developia.prevengic.dao.Compound compoundDao
+    CompoundDao compoundDao
 
     def setup() {
         compoundRepository = Mock()
         compoundService = new CompoundServiceImpl(compoundRepository)
 
         compound = new Compound(ncas: "ncas", nce: "nce", name: "Test compound1")
-        compoundDao = new info.developia.prevengic.dao.Compound(ncas: "ncas", nce: "nce", name: "Test compound1")
+        compoundDao = new CompoundDao(ncas: "ncas", nce: "nce", name: "Test compound1")
     }
 
     def "test find All"() {

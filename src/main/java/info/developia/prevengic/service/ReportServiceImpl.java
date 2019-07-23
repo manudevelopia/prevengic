@@ -19,6 +19,9 @@ import java.util.stream.Collectors;
 @Service
 public class ReportServiceImpl implements ReportService {
 
+    private static final int HOURS_LONG_EXPOSITION = 8;
+    private static final int HOURS_SHORT_EXPOSITION = 1;
+
     private final ReportRepository reportRepository;
 
     private final CompoundRepository compoundRepository;
@@ -60,8 +63,8 @@ public class ReportServiceImpl implements ReportService {
                 .orElseThrow(CompoundDoesNotExistException::new);
 
         // TODO: replace hour values with constants
-        ExpositionResultDao exposition = calculateExposition(compound, 8);
-        ExpositionResultDao shortExposition = calculateExposition(compound, 1);
+        ExpositionResultDao exposition = calculateExposition(compound, HOURS_LONG_EXPOSITION);
+        ExpositionResultDao shortExposition = calculateExposition(compound, HOURS_SHORT_EXPOSITION);
 
         return ReportResultDao.builder()
                 .compound(compound)

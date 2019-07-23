@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "REPORT_RESULTS")
+@Table(name = "EXPOSITION_RESULTS")
 @Data
 @Builder
 public class ExpositionResultDao {

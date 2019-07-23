@@ -37,6 +37,6 @@ public class ReportDao {
     private UserDao user;
 
     @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
-    private List<CompoundReportResult> compoundReportResults;
+    private List<ReportResultDao> compoundReportResults;
 
 }

@@ -36,7 +36,7 @@ public class Compound {
     private String url;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private ChemicalProfile chemicalProfile;
+    private ChemicalProfileDao chemicalProfile;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private WorkareaDao workarea;

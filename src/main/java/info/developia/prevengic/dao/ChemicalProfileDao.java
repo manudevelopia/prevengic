@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -23,7 +25,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "CHEMICAL_PROFILES")
-public class ChemicalProfile {
+public class ChemicalProfileDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,9 +42,15 @@ public class ChemicalProfile {
     private Set<Compound> compounds;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "CHEMICAL_PROFILES_WARNING_ADVICES",
+            joinColumns = @JoinColumn(name = "CHEMICAL_PROFILE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WARNING_ADVICES_ID"))
     private Set<WarningAdviceDao> warningAdvices;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "CHEMICAL_PROFILES_NOTES",
+            joinColumns = @JoinColumn(name = "CHEMICAL_PROFILE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "NOTES_ID"))
     private Set<NoteDao> notes;
 
     public void addNote(NoteDao note) {

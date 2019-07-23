@@ -1,9 +1,9 @@
 package info.developia.prevengic.service;
 
 import info.developia.prevengic.dao.Compound;
-import info.developia.prevengic.dao.CompoundReportResult;
 import info.developia.prevengic.dao.ExpositionResultDao;
 import info.developia.prevengic.dao.ReportDao;
+import info.developia.prevengic.dao.ReportResultDao;
 import info.developia.prevengic.dto.SelectedCompoundForm;
 import info.developia.prevengic.dto.SelectedCompoundItem;
 import info.developia.prevengic.exception.CompoundDoesNotExistException;
@@ -38,10 +38,10 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public info.developia.prevengic.model.Report create(SelectedCompoundForm selectedCompoundForm) {
-        List<CompoundReportResult> result = processSelectedCompounds(selectedCompoundForm);
+        List<ReportResultDao> results = processSelectedCompounds(selectedCompoundForm);
 
         ReportDao report = ReportDao.builder()
-                .compoundReportResults(result)
+                .compoundReportResults(results)
                 .build();
 
         reportRepository.save(report);
@@ -49,13 +49,13 @@ public class ReportServiceImpl implements ReportService {
         return ReportMapper.MAPPER.entityToDomain(report);
     }
 
-    private List<CompoundReportResult> processSelectedCompounds(SelectedCompoundForm selectedCompoundForm) {
+    private List<ReportResultDao> processSelectedCompounds(SelectedCompoundForm selectedCompoundForm) {
         return selectedCompoundForm.getCompounds().stream()
                 .map(this::processCompound)
                 .collect(Collectors.toList());
     }
 
-    private CompoundReportResult processCompound(SelectedCompoundItem item) {
+    private ReportResultDao processCompound(SelectedCompoundItem item) {
         Compound compound = compoundRepository.findByName(item.getName())
                 .orElseThrow(CompoundDoesNotExistException::new);
 
@@ -63,7 +63,7 @@ public class ReportServiceImpl implements ReportService {
         ExpositionResultDao exposition = calculateExposition(compound, 8);
         ExpositionResultDao shortExposition = calculateExposition(compound, 1);
 
-        return CompoundReportResult.builder()
+        return ReportResultDao.builder()
                 .compound(compound)
                 .exposition(exposition)
                 .shortExposition(shortExposition)

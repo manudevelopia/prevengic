@@ -14,10 +14,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "REPORTS")
+@Table(name = "REPORT_RESULTS")
 @Builder
 @Data
-public class CompoundReportResult {
+public class ReportResultDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

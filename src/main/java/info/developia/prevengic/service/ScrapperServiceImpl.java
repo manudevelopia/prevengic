@@ -1,5 +1,6 @@
 package info.developia.prevengic.service;
 
+import info.developia.prevengic.dao.ChemicalProfileDao;
 import info.developia.prevengic.dao.NoteDao;
 import info.developia.prevengic.dao.WarningAdviceDao;
 import info.developia.prevengic.dto.ScrappedCompoundDto;
@@ -74,7 +75,7 @@ public class ScrapperServiceImpl implements ScrapperService {
                 .nce(newCompound.getNce())
                 .ncas(newCompound.getNcas())
                 .url(newCompound.getUrl())
-                .chemicalProfile(info.developia.prevengic.dao.ChemicalProfile.builder()
+                .chemicalProfile(ChemicalProfileDao.builder()
                         .notes(new HashSet<>())
                         .warningAdvices(new HashSet<>())
                         .build())

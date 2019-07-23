@@ -1,7 +1,7 @@
 package info.developia.prevengic.mapper;
 
-import info.developia.prevengic.dao.CompoundReportResult;
 import info.developia.prevengic.dao.ReportDao;
+import info.developia.prevengic.dao.ReportResultDao;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -20,6 +20,6 @@ public interface ReportMapper {
     @Mapping(source = "compound.name", target = "name")
     @Mapping(source = "compound.chemicalProfile.warningAdvices", target = "warningAdvices")
     @Mapping(source = "compound.chemicalProfile.notes", target = "notes")
-    info.developia.prevengic.model.CompoundReportResult entityToDomain(CompoundReportResult entity);
+    info.developia.prevengic.model.CompoundReportResult entityToDomain(ReportResultDao entity);
 
 }

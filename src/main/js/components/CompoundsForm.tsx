@@ -85,7 +85,7 @@ export class CompoundsForm extends React.Component<any, any> {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({"compounds": this.state.compounds})
     })
-        .then((response) => {
+      .then((response) => {
           return response.json();
         })
       .then((report) => {

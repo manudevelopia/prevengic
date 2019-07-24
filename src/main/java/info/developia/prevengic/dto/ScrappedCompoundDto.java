@@ -48,8 +48,8 @@ public class ScrappedCompoundDto {
         return text.replaceAll("[\\n\\t]", "").trim();
     }
 
-    private Double parseVlaValues(String value) {
-        value = value.replaceAll(REGEX_VLA_UNITS, Strings.EMPTY).trim();
+    private Double parseVlaValues(String valueWithUnit) {
+        String value = valueWithUnit.replaceAll(REGEX_VLA_UNITS, Strings.EMPTY).trim();
 
         try {
             return Double.parseDouble(value);
@@ -61,7 +61,7 @@ public class ScrappedCompoundDto {
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Advise {
+    private static class Advise {
         private String code;
         private String title;
     }

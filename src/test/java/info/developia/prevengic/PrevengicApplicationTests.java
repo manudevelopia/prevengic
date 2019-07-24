@@ -11,6 +11,7 @@ public class PrevengicApplicationTests {
 
     @Test
     public void contextLoads() {
+        assert true;
     }
 
 }

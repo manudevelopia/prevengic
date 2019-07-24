@@ -2,7 +2,7 @@ import * as React from "react";
 import {Col, Row, Table} from "reactstrap";
 
 
-export class NotesAndAdvices extends React.Component<any, any> {
+export class Advices extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);
@@ -41,6 +41,7 @@ export class NotesAndAdvices extends React.Component<any, any> {
 
   private extractCodes(c: any): string{
     let codes: any = [];
+
     c.forEach((c: any) => {
       codes.push(c.code);
     });

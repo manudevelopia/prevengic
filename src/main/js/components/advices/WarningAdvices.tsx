@@ -1,15 +1,10 @@
 import * as React from "react";
 import {Col, Row, Table} from "reactstrap";
 
-
 export class WarningAdvices extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);
-  }
-
-  private addToSelected(index: number) {
-    this.props.onChange(index);
   }
 
   public render() {

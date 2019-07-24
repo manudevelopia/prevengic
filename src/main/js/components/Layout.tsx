@@ -2,13 +2,13 @@ import * as React from "react";
 import {Container} from "reactstrap";
 import {Search} from "./search/Search";
 import {SearchResults} from "./search/SearchResults";
-import {CompoundsForm} from "./CompoundsForm";
+import {CompoundsForm} from "./exposition/CompoundsForm";
 import {Header} from "./Header";
-import {Exposition} from "./Exposition";
-import {NotesAndAdvices} from "./NotesAndAdvices";
-import {Notes} from "./Notes";
-import {WarningAdvices} from "./WarningAdvices";
-import {ShortExposition} from "./ShortExposition";
+import {Exposition} from "./exposition/Exposition";
+import {NotesAndAdvices} from "./advices/NotesAndAdvices";
+import {Notes} from "./advices/Notes";
+import {WarningAdvices} from "./advices/WarningAdvices";
+import {ShortExposition} from "./exposition/ShortExposition";
 
 export interface LayoutProps {
   compiler: string;

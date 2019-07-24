@@ -8,10 +8,6 @@ export class Notes extends React.Component<any, any> {
     super(props);
   }
 
-  private addToSelected(index: number) {
-    this.props.onChange(index);
-  }
-
   public render() {
     let notes = this.props.notes.map((note: any, index: number) => {
         return <tr key={index}>

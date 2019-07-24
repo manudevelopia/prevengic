@@ -8,10 +8,6 @@ export class NotesAndAdvices extends React.Component<any, any> {
     super(props);
   }
 
-  private addToSelected(index: number) {
-    this.props.onChange(index);
-  }
-
   public render() {
     let compounds = this.props.results.map((compound: any, index: number) => {
         return <tr key={index}>

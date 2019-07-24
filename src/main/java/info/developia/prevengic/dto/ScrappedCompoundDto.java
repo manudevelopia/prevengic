@@ -61,7 +61,7 @@ public class ScrappedCompoundDto {
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    private static class Advise {
+    public static class Advise {
         private String code;
         private String title;
     }

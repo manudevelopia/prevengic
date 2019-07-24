@@ -7,7 +7,7 @@ import {Header} from "./Header";
 import {Exposition} from "./exposition/Exposition";
 import {Advices} from "./advices/Advices";
 import {Notes} from "./advices/Notes";
-import {WarningAdvices} from "./advices/WarningAdvices";
+import {Hazards} from "./advices/Hazards";
 import {ShortExposition} from "./exposition/ShortExposition";
 
 export interface LayoutProps {
@@ -54,7 +54,7 @@ export class Layout extends React.Component<LayoutProps, any> {
         <Exposition calculations={this.state.calculations}/>
         <ShortExposition calculations={this.state.calculations}/>
         <Advices results={this.state.calculations}/>
-        <WarningAdvices warningAdvices={this.state.warningAdvices}/>
+        <Hazards hazards={this.state.warningAdvices}/>
         <Notes notes={this.state.notes}/>
       </Container>
     );

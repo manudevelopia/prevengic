@@ -1,5 +1,6 @@
 package info.developia.prevengic.controller;
 
+import info.developia.prevengic.dto.CompoundDto;
 import info.developia.prevengic.model.Compound;
 import info.developia.prevengic.service.CompoundService;
 import org.springframework.http.ResponseEntity;
@@ -28,10 +29,10 @@ public class CompoundController {
     }
 
     @GetMapping("/find")
-    public ResponseEntity<List<Compound>> findBy(@RequestParam(required = false) String nce,
-                                                 @RequestParam(required = false) String ncas,
-                                                 @RequestParam(required = false) String name) {
-        List<Compound> compounds = compoundService.findBy(nce, ncas, name);
+    public ResponseEntity<List<CompoundDto>> findBy(@RequestParam(required = false) String nce,
+                                                    @RequestParam(required = false) String ncas,
+                                                    @RequestParam(required = false) String name) {
+        List<CompoundDto> compounds = compoundService.findBy(nce, ncas, name);
 
         return ResponseEntity.ok(compounds);
     }

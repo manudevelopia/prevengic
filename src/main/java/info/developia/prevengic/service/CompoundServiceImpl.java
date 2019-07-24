@@ -1,6 +1,7 @@
 package info.developia.prevengic.service;
 
 import info.developia.prevengic.dao.CompoundDao;
+import info.developia.prevengic.dto.CompoundDto;
 import info.developia.prevengic.mapper.CompoundMapper;
 import info.developia.prevengic.model.Compound;
 import info.developia.prevengic.repository.CompoundRepository;
@@ -30,7 +31,7 @@ public class CompoundServiceImpl implements CompoundService {
     }
 
     @Override
-    public List<Compound> findBy(String nce, String cas, String name) {
+    public List<CompoundDto> findBy(String nce, String cas, String name) {
         CompoundDao compoundExample = CompoundDao.builder()
                 .ncas(cas)
                 .nce(nce)
@@ -46,7 +47,7 @@ public class CompoundServiceImpl implements CompoundService {
         Example<CompoundDao> example = Example.of(compoundExample, matcher);
 
         return compoundRepository.findAll(example).stream()
-                .map(CompoundMapper.MAPPER::entityToDomain)
+                .map(CompoundMapper.MAPPER::entityToDto)
                 .collect(Collectors.toList());
     }
 

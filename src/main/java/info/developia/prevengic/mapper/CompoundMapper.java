@@ -1,6 +1,8 @@
 package info.developia.prevengic.mapper;
 
 import info.developia.prevengic.dao.CompoundDao;
+import info.developia.prevengic.dto.CompoundDto;
+import info.developia.prevengic.model.Compound;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -11,7 +13,9 @@ public interface CompoundMapper {
 
     CompoundMapper MAPPER = Mappers.getMapper(CompoundMapper.class);
 
-    info.developia.prevengic.model.Compound entityToDomain(CompoundDao entity);
+    Compound entityToDomain(CompoundDao dao);
+
+    CompoundDto entityToDto(CompoundDao dao);
 
     List<info.developia.prevengic.model.Compound> entityToDomain(List<CompoundDao> entity);
 

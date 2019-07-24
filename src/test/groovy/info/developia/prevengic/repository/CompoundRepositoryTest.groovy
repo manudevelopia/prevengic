@@ -15,7 +15,7 @@ class CompoundRepositoryTest extends Specification {
     CompoundDao compound
 
     def setup() {
-        compound = new CompoundDao(ncas: "CAS", nce: "NCE", name: "Test compound1")
+        compound = new CompoundDao(ncas: "NCAS", nce: "NCE", name: "Test compound1")
 
         compoundRepository.save(compound)
     }

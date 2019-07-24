@@ -51,7 +51,7 @@ export class Search extends React.Component<any, any> {
               <Col md={3}>
                 <FormGroup>
                   <Label for="name">CAS</Label>
-                  <Input type="text" name="cas" id="cas" placeholder="Buscar por CAS"
+                  <Input type="text" name="ncas" id="ncas" placeholder="Buscar por CAS"
                          value={this.state.ncas}
                          onChange={(e: any) => this.handleChange(e)}/>
                 </FormGroup>

@@ -8,11 +8,11 @@ export class Hazards extends React.Component<any, any> {
   }
 
   public render() {
-    let hazards = this.props.hazards.map((note: any, index: number) => {
+    let hazards = this.props.hazards.map((hazard: any, index: number) => {
         return <tr key={index}>
           <th scope="row">{index + 1}</th>
-          <td>{note.code}</td>
-          <td>{note.description}</td>
+          <td>{hazard.code}</td>
+          <td>{hazard.description}</td>
         </tr>;
       }
     );

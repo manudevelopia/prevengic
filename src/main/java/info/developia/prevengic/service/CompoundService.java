@@ -11,6 +11,4 @@ public interface CompoundService {
 
     List<CompoundDto> findBy(String nce, String ncas, String name);
 
-    Compound create(Compound compound);
-
 }

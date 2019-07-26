@@ -62,7 +62,6 @@ public class ReportServiceImpl implements ReportService {
         CompoundDao compound = compoundRepository.findByName(item.getName())
                 .orElseThrow(CompoundDoesNotExistException::new);
 
-        // TODO: replace hour values with constants
         ExpositionResultDao exposition = calculateExposition(compound, HOURS_LONG_EXPOSITION);
         ExpositionResultDao shortExposition = calculateExposition(compound, HOURS_SHORT_EXPOSITION);
 

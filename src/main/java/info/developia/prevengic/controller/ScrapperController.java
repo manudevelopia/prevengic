@@ -20,14 +20,6 @@ public class ScrapperController {
         this.scrapperService = scrapperService;
     }
 
-    @PostMapping("/compound")
-    public ResponseEntity createCompound(@RequestBody ScrappedCompoundDto scrappedCompoundDto) {
-
-        scrapperService.parse(scrappedCompoundDto);
-
-        return ResponseEntity.ok().build();
-    }
-
     @PostMapping("/compounds")
     public ResponseEntity createCompounds(@RequestBody List<ScrappedCompoundDto> scrappedCompoundDtoList) {
 
@@ -41,4 +33,5 @@ public class ScrapperController {
 
         return ResponseEntity.ok().build();
     }
+
 }

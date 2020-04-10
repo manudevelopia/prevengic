@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+
+  prevengic:
+    build: ./
+    image: developia/prevengic:latest
+    container_name: prevengic
+    ports:
+    - 8080:8080
+    depends_on:
+      - prevengic-db
+
+  prevengic-db:
+    image: postgres
+    container_name: postgres-prevengic
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=PREVENGIC_DB
+    ports:
+      - 5432:5432
+    volumes:
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      - ./sql/data.sql:/docker-entrypoint-initdb.d/2-data.sql
+

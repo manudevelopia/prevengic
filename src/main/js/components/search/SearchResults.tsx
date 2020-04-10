@@ -19,6 +19,10 @@ export class SearchResults extends React.Component<any, any> {
           <td>{compound.nce}</td>
           <td>{compound.ncas}</td>
           <td><a href={compound.url} target={"_blank"}>{compound.name}</a></td>
+          <td>{compound.vlaEdPpm}</td>
+          <td>{compound.vlaEdMgm}</td>
+          <td>{compound.vlaEcPpm}</td>
+          <td>{compound.vlaEcMgm}</td>
           <td><Button color="primary" size="sm" onClick={() => {this.addToSelected(index)}}>Añadir</Button></td>
         </tr>;
       }
@@ -35,6 +39,10 @@ export class SearchResults extends React.Component<any, any> {
               <th>Nº CE</th>
               <th>CAS</th>
               <th>Nombre</th>
+              <th>vlaEd ppm</th>
+              <th>vlaEd mg/m3</th>
+              <th>vlaEc ppm</th>
+              <th>vlaEc mg/m3</th>
               <th/>
             </tr>
             </thead>

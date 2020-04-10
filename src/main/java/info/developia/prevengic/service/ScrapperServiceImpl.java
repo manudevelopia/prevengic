@@ -71,6 +71,7 @@ public class ScrapperServiceImpl implements ScrapperService {
     }
 
     private Compound createCompound(Compound newCompound) {
+        ChemicalProfile chemicalProfile = newCompound.getChemicalProfile();
         CompoundDao compoundEntity = CompoundDao.builder()
                 .name(newCompound.getName())
                 .nce(newCompound.getNce())
@@ -94,6 +95,11 @@ public class ScrapperServiceImpl implements ScrapperService {
             Set<WarningAdviceDao> warningAdvices = newCompound.getChemicalProfile().getWarningAdvices()
                     .stream().map(this::parseWarningAdvices).collect(Collectors.toSet());
             compoundEntity.getChemicalProfile().setWarningAdvices(warningAdvices);
+
+            compoundEntity.getChemicalProfile().setVlaEcMgm(chemicalProfile.getVlaEcMgm());
+            compoundEntity.getChemicalProfile().setVlaEcPpm(chemicalProfile.getVlaEcPpm());
+            compoundEntity.getChemicalProfile().setVlaEdMgm(chemicalProfile.getVlaEdMgm());
+            compoundEntity.getChemicalProfile().setVlaEdPpm(chemicalProfile.getVlaEdPpm());
         }
 
         CompoundDao result = compoundRepository.save(compoundEntity);

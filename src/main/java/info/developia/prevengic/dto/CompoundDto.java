@@ -12,4 +12,8 @@ public class CompoundDto {
     private String name;
     private String url;
 
+    private Double vlaEdPpm;
+    private Double vlaEdMgm;
+    private Double vlaEcPpm;
+    private Double vlaEcMgm;
 }
